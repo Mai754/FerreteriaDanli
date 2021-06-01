@@ -30,7 +30,7 @@
 
               <div class="col-md-8">
                 <div class="mb-4">
-                  <center><h3>Inicio de Secion</h3></center>
+                  <center><h3>Inicio de Sesión</h3></center>
                   <center><p class="mb-4">Bienvenido(a) a Nuestra Ferreteria</p></center>
                 </div>
 

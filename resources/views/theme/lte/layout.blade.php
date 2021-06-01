@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="{{asset("assets/$theme/plugins/overlayScrollbars/css/OverlayScrollbars.css")}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/adminlte.min.css")}}">
-        <link rel="stylesheet" href="{{asset("assets/EasyAutocomplete/easy-autocomplete.min.css")}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         @yield('styles')
         <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
@@ -46,11 +45,11 @@
         @yield('scriptsPlugins')
         <script src="{{asset("assets/js/jquery-validation/jquery.validate.min.js")}}"></script>
         <script src="{{asset("assets/js/jquery-validation/localization/messages_es.min.js")}}"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script src="{{asset("assets/js/scripts.js")}}"></script>
         <script src="{{asset("assets/js/funciones.js")}}"></script>
-        <script src="{{asset("assets/EasyAutocomplete/jquery.easy-autocomplete.min.js")}}"></script>
         @yield('scripts')
     </body>
 </html>

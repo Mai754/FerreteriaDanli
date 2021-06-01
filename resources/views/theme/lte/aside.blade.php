@@ -40,7 +40,6 @@
 
           <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
-              <li class="nav-header">MENU PRINCIPAL</li>
               @foreach ($menusComposer as $key => $item)
                 @if ($item["menu_id"] != 0)
                     @break

@@ -1,20 +1,6 @@
 <?php
 
-use App\Models\Admin\Rol;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 
 Route::get('/','InicioController@index')->name('inicio');
 Route::get('seguridad/login', 'seguridad\LoginController@index')->name('login');
@@ -96,4 +82,19 @@ Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => [
     Route::get('empleado/{id}/editar', 'EmpleadoController@editar')->name('editar_empleado');
     Route::put('empleado/{id}', 'EmpleadoController@actualizar')->name('actualizar_empleado');
     Route::delete('empleado/{id}', 'EmpleadoController@eliminar')->name('eliminar_empleado');
+
+    Route::get('proyecto', 'ProyectoController@index')->name('proyecto');
+    Route::get('proyecto/crear', 'ProyectoController@crear')->name('crear_proyecto');
+    Route::post('proyecto', 'ProyectoController@guardar')->name('guardar_proyecto');
+    Route::get('proyecto/{id}/editar', 'ProyectoController@editar')->name('editar_proyecto');
+    Route::get('proyecto/{id}/ver', 'ProyectoController@ver')->name('ver_proyecto');
+    Route::put('proyecto/{id}', 'ProyectoController@actualizar')->name('actualizar_proyecto');
+    Route::delete('proyecto/{id}', 'ProyectoController@eliminar')->name('eliminar_proyecto');
+});
+
+Route::group(['prefix' => 'evento', 'namespace'=>'Evento', 'middleware'=>['auth']], function(){
+    Route::get('evento', 'EventoController@index')->name('evento');
+    Route::get('evento/ver', 'EventoController@show');
+    Route::post('evento/agregar', 'EventoController@store');
+    Route::post('evento/editar/{id}', 'EventoController@edit');
 });

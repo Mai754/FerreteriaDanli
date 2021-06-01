@@ -10,14 +10,8 @@ use Illuminate\Support\Facades\Cache;
 
 class InventarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
         can('listar-productos');
         $productos = Inventario::orderby('id')->get();
         return view('produccion.inventarios.index', compact('productos'));

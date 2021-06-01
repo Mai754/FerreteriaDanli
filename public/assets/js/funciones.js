@@ -16,7 +16,7 @@ var Sistema = function(){
                     $(element).closest('.form-control').removeClass('is-invalid');
                 },
                 success: function (label){
-                    label.closest('.form-control').removeClass('is-invalid');
+                    label.closest('.control-label').removeClass('is-invalid');
                 },
                 errorPlacement: function(error, element){
                     if($(element).is('select') && element.hasClass('bs-select')){
