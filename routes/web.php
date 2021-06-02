@@ -90,6 +90,8 @@ Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => [
     Route::get('proyecto/{id}/ver', 'ProyectoController@ver')->name('ver_proyecto');
     Route::put('proyecto/{id}', 'ProyectoController@actualizar')->name('actualizar_proyecto');
     Route::delete('proyecto/{id}', 'ProyectoController@eliminar')->name('eliminar_proyecto');
+
+    Route::get('planilla', 'HoraController@index')->name('horas');
 });
 
 Route::group(['prefix' => 'evento', 'namespace'=>'Evento', 'middleware'=>['auth']], function(){
