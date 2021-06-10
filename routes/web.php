@@ -102,10 +102,16 @@ Route::group(['prefix' => 'evento', 'namespace'=>'Evento', 'middleware'=>['auth'
     Route::post('evento/editar/{id}', 'EventoController@edit');
 });
 
-Route::get('vista', 'Empleado\HoraController@vista');
+//Route::get('vista', 'Empleado\HoraController@vista');
 
 Route::post('dias_libres', 'Empleado\HoraController@asignar_dias_libre')->name('asignar_dias_libres');
 
-Route::post('dias_faltantes/', 'Empleado\HoraController@asignar_dias_faltantes')->name('asignar_dias_faltantes');
+Route::post('dias_faltantes', 'Empleado\HoraController@asignar_dias_faltante')->name('asignar_dias_faltantes');
+
+Route::post('horas_tabajadas', 'Empleado\HoraController@asignar_horas_tabajada')->name('asignar_horas_tabajadas');
+
+Route::post('domingos_trabajados', 'Empleado\HoraController@asignar_domingos_trabajado')->name('asignar_domingos_trabajados');
+
+Route::post('limpiar_datos/{id}', 'Empleado\HoraController@resetear_datos_empleados')->name('reset_datos_empleados');
 
 
