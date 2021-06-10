@@ -19,6 +19,8 @@ class DatosAdicionalesEmpleados extends Migration
             $table->integer('dias_faltantes');
             $table->unsignedInteger('id_empleado');
             $table->foreign('id_empleado', 'fk_empleados')->references('id_empleado')->on('empleado')->onDelete('restrict')->onUpdate('restrict');
+            $table->integer('horas_tabajadas');
+            $table->integer('domingos_trabajados');
             $table->timestamps();
         });
     }

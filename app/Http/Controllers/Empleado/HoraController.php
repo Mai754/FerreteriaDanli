@@ -135,4 +135,56 @@ class HoraController extends Controller
     }
 
 
+    public function asignar_horas_tabajada(Request $request){
+
+        $datos_adcionales = DB::select('select * from datos_empleados where id_empleado = ?', [$request->id_empleado]);
+
+        if(count($datos_adcionales)==0){
+            $datos_adcionales = new DatosAdcionalesEmpleado();
+
+            $datos_adcionales->horas_tabajadas = $request->horas_tabajadas;
+            $datos_adcionales->id_empleado = $request->id_empleado;
+            $datos_adcionales->save();
+        }else{
+            $datos_adcionales = DatosAdcionalesEmpleado::where('id_empleado',$request->id_empleado)->firstOrFail();
+
+            $datos_adcionales->horas_tabajadas = $request->horas_tabajadas;
+            $datos_adcionales->save();
+        }
+        //aqui se redirecciona a la vista actual
+        return 'Horas Trabajadas Asignadas Exitosamente';
+
+    }
+
+
+    public function asignar_domingos_trabajado(Request $request){
+
+        $datos_adcionales = DB::select('select * from datos_empleados where id_empleado = ?', [$request->id_empleado]);
+
+        if(count($datos_adcionales)==0){
+            $datos_adcionales = new DatosAdcionalesEmpleado();
+
+            $datos_adcionales->domingos_trabajados = $request->domingos_trabajados;
+            $datos_adcionales->id_empleado = $request->id_empleado;
+            $datos_adcionales->save();
+        }else{
+            $datos_adcionales = DatosAdcionalesEmpleado::where('id_empleado',$request->id_empleado)->firstOrFail();
+
+            $datos_adcionales->domingos_trabajados = $request->domingos_trabajados;
+            $datos_adcionales->save();
+        }
+        //aqui se redirecciona a la vista actual
+        return 'Domingos Trbajados Asignadas Exitosamente';
+    }
+
+    public function resetear_datos_empleados($id){
+        DB::update('update datos_empleados set dias_libres = 0,
+                                                dias_faltantes = 0,
+                                                horas_tabajadas = 0,
+                                                domingos_trabajados = 0,
+                    where id_empleado = ?',[$id]);
+        //aqui se redirecciona a la vista actual
+        return 'Datos Limpiados Exitosamente';
+    }
+
 }
