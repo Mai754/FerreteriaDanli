@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Empleado;
 
 use App\Http\Controllers\Controller;
+use App\Models\Empleado\DatosAdcionalesEmpleado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use function PHPUnit\Framework\isNull;
 
 class HoraController extends Controller
 {
@@ -82,4 +86,53 @@ class HoraController extends Controller
     {
         //
     }
+
+    // public function vista(){
+    //     return view('vista_prueba');
+    // }
+
+    public function asignar_dias_libre(Request $request){
+
+        $datos_adcionales = DB::select('select * from datos_empleados where id_empleado = ?', [$request->id_empleado]);
+
+        if(count($datos_adcionales)==0){
+            $datos_adcionales = new DatosAdcionalesEmpleado();
+
+            $datos_adcionales->dias_libres = $request->dias_libres;
+            $datos_adcionales->id_empleado = $request->id_empleado;
+            $datos_adcionales->save();
+        }else{
+            $datos_adcionales = DatosAdcionalesEmpleado::where('id_empleado',$request->id_empleado)->firstOrFail();
+
+            $datos_adcionales->dias_libres = $request->dias_libres;
+            $datos_adcionales->save();
+        }
+        //aqui se redirecciona a la vista actual
+        return 'Dias Libres Asignadas Exitosamente';
+
+    }
+
+
+
+    public function asignar_dias_faltantes(Request $request){
+
+        $datos_adcionales = DB::select('select * from datos_empleados where id_empleado = ?', [$request->id_empleado]);
+
+        if(count($datos_adcionales)==0){
+            $datos_adcionales = new DatosAdcionalesEmpleado();
+
+            $datos_adcionales->dias_faltantes = $request->dias_faltantes;
+            $datos_adcionales->id_empleado = $request->id_empleado;
+            $datos_adcionales->save();
+        }else{
+            $datos_adcionales = DatosAdcionalesEmpleado::where('id_empleado',$request->id_empleado)->firstOrFail();
+
+            $datos_adcionales->dias_faltantes = $request->dias_faltantes;
+            $datos_adcionales->save();
+        }
+        //aqui se redirecciona a la vista actual
+        return 'Dias Faltantes Asignadas Exitosamente';
+    }
+
+
 }
