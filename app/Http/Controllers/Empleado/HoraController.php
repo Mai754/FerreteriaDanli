@@ -15,6 +15,7 @@ class HoraController extends Controller
     public function index()
     {
         return view('empleados.planilla.index');
+        
     }
 
     /**

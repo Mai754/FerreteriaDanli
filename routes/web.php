@@ -99,4 +99,5 @@ Route::group(['prefix' => 'evento', 'namespace'=>'Evento', 'middleware'=>['auth'
     Route::get('evento/ver', 'EventoController@show');
     Route::post('evento/agregar', 'EventoController@store');
     Route::post('evento/editar/{id}', 'EventoController@edit');
+    
 });
