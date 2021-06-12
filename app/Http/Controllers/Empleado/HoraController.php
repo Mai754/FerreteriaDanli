@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Empleado;
 
 use App\Http\Controllers\Controller;
 use App\Models\Empleado\DatosAdcionalesEmpleado;
-use Illuminate\Http\Request;
+use App\Http\Requests\ValidacionHora;
+use App\Models\Empleado\Hora;
+  use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isNull;
@@ -19,6 +21,7 @@ class HoraController extends Controller
     public function index()
     {
         return view('empleados.planilla.index');
+
     }
 
     /**
@@ -37,9 +40,9 @@ class HoraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(Request $request)
+    public function guardar(ValidacionHora $request)
     {
-        //
+        Hora::create($request->all());
     }
 
     /**
