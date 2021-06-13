@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Empleado;
 use App\Http\Controllers\Controller;
 use App\Models\Empleado\DatosAdcionalesEmpleado;
 use App\Http\Requests\ValidacionHora;
+use App\Models\Empleado\Empleado;
 use App\Models\Empleado\Hora;
-  use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isNull;
@@ -20,8 +22,10 @@ class HoraController extends Controller
      */
     public function index()
     {
-        return view('empleados.planilla.index');
+        $empleados = DB::table('empleado')->get();
+        $asistencia = DB::select('select * from `asitencia_empleados` where MONTH(fecha_hora_entrada) = ?', [Carbon::now()->format("m")]);
 
+        return view('empleados.planilla.index')->with("empleados",$empleados)->with("asistencia",$asistencia);
     }
 
     /**
@@ -117,7 +121,7 @@ class HoraController extends Controller
 
 
 
-    public function asignar_dias_faltantes(Request $request){
+    public function asignar_dias_faltante(Request $request){
 
         $datos_adcionales = DB::select('select * from datos_empleados where id_empleado = ?', [$request->id_empleado]);
 

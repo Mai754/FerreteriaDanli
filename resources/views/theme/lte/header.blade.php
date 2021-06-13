@@ -9,7 +9,7 @@
         <a href="/" class="nav-link">Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Proveedores</a>
+        <a href="planilla" class="nav-link">Proveedores</a>
       </li>
     </ul>
 
@@ -25,8 +25,8 @@
       </div>
     </form>
 
-    
-    
+
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
@@ -123,7 +123,7 @@
         <a href="" class="d-block" data-toggle="dropdown" aria-expanded="true">
           <img src="{{asset("assets/$theme/dist/img/avatar5.png")}}" class="img-circle" style="width: 35px;" style="height: 35px;" alt="User Image">
         </a>
-        
+
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="card card-widget widget-user shadow">
             <div class="widget-user-header bg-info">

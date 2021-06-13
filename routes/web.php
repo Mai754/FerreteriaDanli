@@ -92,7 +92,8 @@ Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => [
     Route::put('proyecto/{id}', 'ProyectoController@actualizar')->name('actualizar_proyecto');
     Route::delete('proyecto/{id}', 'ProyectoController@eliminar')->name('eliminar_proyecto');
 
-    Route::get('/planilla', 'HoraController@index')->name('horas');
+   // Route::get('/planilla', 'Empleado\HoraController@index')->name('horas');
+
 });
 
 Route::group(['prefix' => 'evento', 'namespace'=>'Evento', 'middleware'=>['auth']], function(){
@@ -100,10 +101,11 @@ Route::group(['prefix' => 'evento', 'namespace'=>'Evento', 'middleware'=>['auth'
     Route::get('evento/ver', 'EventoController@show');
     Route::post('evento/agregar', 'EventoController@store');
     Route::post('evento/editar/{id}', 'EventoController@edit');
-    
+
 });
 
 //Route::get('vista', 'Empleado\HoraController@vista');
+Route::get('/planilla', 'Empleado\HoraController@index')->name('horas');
 
 Route::post('dias_libres', 'Empleado\HoraController@asignar_dias_libre')->name('asignar_dias_libres');
 
