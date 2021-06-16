@@ -92,10 +92,10 @@ Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => [
     Route::delete('proyecto/{id}', 'ProyectoController@eliminar')->name('eliminar_proyecto');
 
     Route::get('planilla/entrada', 'HoraController@crear')->name('hora_entrada');
-    Route::post('planilla', 'HoraController@guardar')->name('guardar_horas');
+    Route::post('/', 'HoraController@guardar')->name('guardar_horaentrada');
 
-    Route::get('planilla/salida', 'HoraSController@crear')->name('hora_entrada');
-    Route::post('planilla', 'HoraSController@guardar')->name('guardar_horas');
+    Route::get('planilla/salida', 'HoraSController@crear')->name('hora_salida');
+    Route::post('planilla', 'HoraSController@guardar')->name('guardar_horasalida');
 });
 
 Route::group(['prefix' => 'evento', 'namespace'=>'Evento', 'middleware'=>['auth']], function(){

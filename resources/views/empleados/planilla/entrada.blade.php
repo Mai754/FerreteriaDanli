@@ -20,7 +20,7 @@
             <div class="card-header">
                 <h3 class="card-title">Hora Entrada</h3>
             </div>
-            <form action="{{route('guardar_horas')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
+            <form action="{{route('guardar_horaentrada')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
                 @csrf
                 <div class="card-body">
                     <div class="bootstrap-timepicker">
