@@ -9,5 +9,5 @@ class Hora extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $table = 'horas';
+    protected $table = 'horaentrada';
 }

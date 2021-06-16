@@ -24,7 +24,7 @@ class ValidacionHora extends FormRequest
     public function rules()
     {
         return [
-            //
+            'HoraEntrada' => 'required',
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Empleado;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidacionHora;
 use App\Models\Empleado\Hora;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HoraController extends Controller
@@ -16,7 +17,7 @@ class HoraController extends Controller
      */
     public function index()
     {
-        return view('empleados.planilla.index');
+        
 
     }
 
@@ -27,7 +28,9 @@ class HoraController extends Controller
      */
     public function crear()
     {
-        //
+        $now = Carbon::now();
+        $currentTime = $now->format('H:i');
+        return view('empleados.planilla.index', compact('currentTime'));
     }
 
     /**
