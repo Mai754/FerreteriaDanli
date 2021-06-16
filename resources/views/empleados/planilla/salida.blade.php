@@ -26,7 +26,7 @@
                     <div class="bootstrap-timepicker">
                         <div class="form-group">
                             <div class="input-group date" id="timepicker" data-target-input="nearest">
-                                <input type="text" class="form-control" name="HoraSalida" value="{{ old('HoraSalida', $currentTime) }}" required>
+                                <input type="text" class="form-control" name="HoraSalida" value="{{ old('HoraSalida', $currentTime) }}" required readonly>
                             </div>
                         </div>
                     </div>
