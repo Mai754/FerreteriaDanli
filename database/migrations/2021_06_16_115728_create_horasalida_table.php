@@ -15,7 +15,7 @@ class CreateHorasalidaTable extends Migration
     {
         Schema::create('horasalida', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('HoraSalida');
+            $table->string('HoraSalida');
             $table->timestamps();
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';

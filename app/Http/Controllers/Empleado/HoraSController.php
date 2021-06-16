@@ -3,16 +3,12 @@
 namespace App\Http\Controllers\Empleado;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ValidacionHora;
-use App\Http\Requests\ValidacionHoraEntrada;
 use App\Http\Requests\ValidacionHoraSalida;
-use App\Models\Empleado\Hora;
-use App\Models\Empleado\HoraEntrada;
 use App\Models\Empleado\HoraSalida;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class HoraController extends Controller
+class HoraSController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +17,7 @@ class HoraController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -33,7 +29,7 @@ class HoraController extends Controller
     {
         $now = Carbon::now();
         $currentTime = $now->format('H:i');
-        return view('empleados.planilla.entrada', compact('currentTime'));
+        return view('empleados.planilla.salida', compact('currentTime'));
     }
 
     /**
@@ -42,10 +38,10 @@ class HoraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(ValidacionHoraEntrada $request)
+    public function guardar(ValidacionHoraSalida $request)
     {
-        HoraEntrada::create($request->all());
-        return redirect('/')->with('mensaje','Hora de Entrada Ingresada');
+        HoraSalida::create($request->all());
+        return redirect('/')->with('mensaje','Hora de Salida Ingresada');
     }
 
     /**
