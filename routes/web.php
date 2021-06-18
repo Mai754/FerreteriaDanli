@@ -91,6 +91,9 @@ Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => [
     Route::put('proyecto/{id}', 'ProyectoController@actualizar')->name('actualizar_proyecto');
     Route::delete('proyecto/{id}', 'ProyectoController@eliminar')->name('eliminar_proyecto');
 
+    Route::get('departamento', 'DepartamentoController@index')->name('departamento');
+    Route::get('departamento/crear', 'DepartamentoController@crear')->name('crear_departamento');
+
     Route::get('planilla/entrada', 'HoraController@crear')->name('hora_entrada');
     Route::post('/', 'HoraController@guardar')->name('guardar_horaentrada');
 
