@@ -24,7 +24,8 @@ class ValidacionDepartamento extends FormRequest
     public function rules()
     {
         return [
-            //
+            'Nombre_departamento' => 'required|unique:departamento,Nombre_departamento'. $this->route('id'),
+            'Numero_departamento' => 'required|unique:departamento,Numero_departamento'. $this->route('id'),
         ];
     }
 }

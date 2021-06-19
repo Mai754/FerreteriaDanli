@@ -14,12 +14,12 @@
             <div class="card-header">
                 <h3 class="card-title">Crear Departamento</h3>
                 <div class="card-tools pull-right">
-                    <a href="{{route('')}}" class="btn btn-block btn-info btn-sm">
+                    <a href="{{route('departamento')}}" class="btn btn-block btn-info btn-sm">
                         <i class="fa fa-fw fa-reply-all"></i> Volver
                     </a>
                 </div>
             </div>
-            <form action="{{route('')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
+            <form action="{{route('guardar_departamento')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
                 @csrf
                 <div class="card-body">
                     @include('empleados.departamento.form')

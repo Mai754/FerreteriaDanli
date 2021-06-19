@@ -25,14 +25,33 @@
                         <tr class="text-center">
                             <th class="width20">ID</th>
                             <th>Nombre</th>
-                            <th>Sueldo</th>
                             <th>Numero</th>
+                            <th>Sueldo</th>
                             <th>Empleados</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        @foreach($departamentos as $departamento)
+                            <tr class="text-center">
+                                <td>{{$departamento->id}}</td>
+                                <td>{{$departamento->Nombre_departamento}}</td>
+                                <td>{{$departamento->Numero_departamento}}</td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="{{route('editar_departamento', ['id' => $departamento->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <form action="{{route('eliminar_departamento', ['id' => $departamento->id])}}" class="d-inline form-eliminar" method="POST">
+                                        @csrf @method("delete")
+                                        <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
+                                            <i class="fa fa-trash text-danger"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>   

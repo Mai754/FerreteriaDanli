@@ -16,8 +16,8 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        $departamento = Departamento::orderby('id')->get();
-        return view('empleados.departamento.index', compact('departamento'));
+        $departamentos = Departamento::orderby('id')->get();
+        return view('empleados.departamento.index', compact('departamentos'));
     }
 
     /**
@@ -38,7 +38,8 @@ class DepartamentoController extends Controller
      */
     public function guardar(ValidacionDepartamento $request)
     {
-        //
+        Departamento::create($request->all());
+        return redirect('empleado/departamento')->with('mensaje', 'Departamento creado con exito');
     }
 
     /**
@@ -60,7 +61,8 @@ class DepartamentoController extends Controller
      */
     public function editar($id)
     {
-        //
+        $departamentos = Departamento::findOrFail($id);
+        return view('empleados.departamento.editar', compact('departamentos'));
     }
 
     /**
@@ -72,7 +74,8 @@ class DepartamentoController extends Controller
      */
     public function actualizar(ValidacionDepartamento $request, $id)
     {
-        //
+        Departamento::findOrFail($id)->update($request->all());
+        return redirect('empleado/departamento')->with('mensaje', 'Departamento actualizado con exito');
     }
 
     /**
@@ -81,8 +84,16 @@ class DepartamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function eliminar($id)
+    public function eliminar(Request $request, $id)
     {
-        //
+        if($request->ajax()){
+            if(Departamento::destroy($id)){
+                return response()->json(['mensaje'=>'ok']);
+            }else{
+                return response()->json(['mensaje'=>'ng']);
+            }
+        }else{
+            abort(404);
+        }
     }
 }

@@ -15,8 +15,8 @@ class CreateDepartamentoTable extends Migration
     {
         Schema::create('departamento', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Nombre_departamento');
-            $table->integer('Numero_departamento');
+            $table->string('Nombre_departamento')->unique();
+            $table->integer('Numero_departamento')->unique();
             $table->timestamps();
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
