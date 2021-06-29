@@ -98,6 +98,13 @@ Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => [
     Route::put('departamento/{id}', 'DepartamentoController@actualizar')->name('actualizar_departamento');
     Route::delete('departamento/{id}', 'DepartamentoController@eliminar')->name('eliminar_departamento');
 
+    Route::get('sueldo', 'SueldoController@index')->name('sueldo');
+    Route::get('sueldo/crear', 'SueldoController@crear')->name('crear_sueldo');
+    Route::post('sueldo', 'SueldoController@guardar')->name('guardar_sueldo');
+    Route::get('sueldo/{id}/editar', 'SueldoController@editar')->name('editar_sueldo');
+    Route::put('sueldo/{id}', 'SueldoController@actualizar')->name('actualizar_sueldo');
+    Route::delete('sueldo/{id}', 'SueldoController@eliminar')->name('eliminar_sueldo');
+
     Route::get('planilla/entrada', 'HoraController@crear')->name('hora_entrada');
     Route::post('/', 'HoraController@guardar')->name('guardar_horaentrada');
 
