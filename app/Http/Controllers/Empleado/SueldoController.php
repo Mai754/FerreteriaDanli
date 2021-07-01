@@ -4,25 +4,32 @@ namespace App\Http\Controllers\Empleado;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidacionSueldo;
+use App\Models\Empleado\Departamento;
 use App\Models\Empleado\Sueldo;
+use App\Models\Empleado\Tipo;
 use Illuminate\Http\Request;
 
 class SueldoController extends Controller
 {
     public function index()
     {
-        $sueldos = Sueldo::orderby('id')->get();
+        $sueldos = Sueldo::with('departamentos:id,Nombre_departamento')->orderby('id')->get();
+        $sueldos = Sueldo::with('tipos:id,tipo')->orderby('id')->get();
         return view('empleados.sueldo.index', compact('sueldos'));
     }
 
     public function crear()
     {
-        return view('empleados.sueldo.crear');
+        $departamentos = Departamento::orderBy('id')->pluck('Nombre_departamento', 'id')->toArray();
+        $tipos = Tipo::orderBy('id')->pluck('tipo', 'id')->toArray();
+        return view('empleados.sueldo.crear', compact('departamentos', 'tipos'));
     }
 
     public function guardar(ValidacionSueldo $request)
     {
-        Sueldo::create($request->all());
+        $sueldos = Sueldo::create($request->all());
+        $sueldos->departamentos()->attach($request->departamento_id);
+        $sueldos->tipos()->attach($request->tipo_id);
         return redirect('empleado/sueldo')->with('mensaje', 'Sueldo creado con exito');
     }
 
@@ -33,24 +40,28 @@ class SueldoController extends Controller
 
     public function editar($id)
     {
-        $sueldos = Sueldo::findOrFail($id);
+        $departamentos = Departamento::orderby('id')->pluck('Nombre_departamento', 'id')->toArray();
+        $tipos = Tipo::orderby('id')->pluck('tipo', 'id')->toArray();
+        $sueldos = Sueldo::with('departamentos')->findOrFail($id);
+        $sueldos = Sueldo::with('tipos')->findOrFail($id);
         return view('empleados.sueldo.editar', compact('sueldos'));
     }
 
     public function actualizar(ValidacionSueldo $request, $id)
     {
-        Sueldo::findOrFail($id)->update($request->all());
+        $sueldos = Sueldo::findOrFail($id);
+        $sueldos->departamentos()->sync($request->departamento_id);
+        $sueldos->tipos()->sync($request->tipo_id);
         return redirect('empleado/sueldo')->with('mensaje', 'Sueldo actualizado con exito');
     }
     
     public function eliminar(Request $request, $id)
     {
         if($request->ajax()){
-            if(Sueldo::destroy($id)){
-                return response()->json(['mensaje'=>'ok']);
-            }else{
-                return response()->json(['mensaje'=>'ng']);
-            }
+            $sueldos = Sueldo::findOrFail($id);
+            $sueldos->departamentos()->detach();
+            $sueldos->tipos()->detach();
+            return response()->json(['mensaje' => 'ok']);
         }else{
             abort(404);
         }

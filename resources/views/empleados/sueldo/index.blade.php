@@ -25,6 +25,8 @@
                         <tr class="text-center">
                             <th class="width20">ID</th>
                             <th>Sueldo</th>
+                            <th>Tipo de Pago</th>
+                            <th>Departamento</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
@@ -33,6 +35,16 @@
                             <tr class="text-center">
                                 <td>{{$sueldo->id}}</td>
                                 <td>{{$sueldo->Sueldo}}</td>
+                                <td class="text-center">
+                                    @foreach ($sueldo->tipos as $tipo)
+                                        {{$loop->last ? $tipo->tipo : $tipo->tipo. ','}}
+                                    @endforeach
+                                </td>
+                                <td class="text-center">
+                                    @foreach ($sueldo->departamentos as $departamento)
+                                        {{$loop->last ? $departamento->Nombre_departamento : $departamento->Nombre_departamento. ','}}
+                                    @endforeach
+                                </td>
                                 <td>
                                     <a href="{{route('editar_sueldo', ['id' => $sueldo->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                         <i class="fa fa-edit"></i>

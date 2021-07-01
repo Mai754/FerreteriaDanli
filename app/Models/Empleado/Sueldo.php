@@ -10,4 +10,14 @@ class Sueldo extends Model
     use HasFactory;
     protected $guarded = ['id'];
     protected $table = 'sueldo';
+
+    public function departamentos()
+    {
+        return $this->belongsToMany(Departamento::class, 'sueldo_departamento');
+    }
+
+    public function tipos()
+    {
+        return $this->belongsToMany(Tipo::class, 'tipo_sueldo');
+    }
 }
