@@ -44,7 +44,7 @@ class SueldoController extends Controller
         $tipos = Tipo::orderby('id')->pluck('tipo', 'id')->toArray();
         $sueldos = Sueldo::with('departamentos')->findOrFail($id);
         $sueldos = Sueldo::with('tipos')->findOrFail($id);
-        return view('empleados.sueldo.editar', compact('sueldos'));
+        return view('empleados.sueldo.editar', compact('sueldos', 'departamentos', 'tipos'));
     }
 
     public function actualizar(ValidacionSueldo $request, $id)
