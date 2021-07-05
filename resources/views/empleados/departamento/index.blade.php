@@ -26,8 +26,7 @@
                             <th class="width20">ID</th>
                             <th>Nombre</th>
                             <th>Numero</th>
-                            <th>Sueldo</th>
-                            <th>Empleados</th>
+                            <th>Jefe</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
@@ -37,8 +36,11 @@
                                 <td>{{$departamento->id}}</td>
                                 <td>{{$departamento->Nombre_departamento}}</td>
                                 <td>{{$departamento->Numero_departamento}}</td>
-                                <td></td>
-                                <td></td>
+                                <td class="text-center">
+                                    @foreach ($departamento->empleados as $empleado)
+                                        {{$loop->last ? $empleado->primer_nombre : $empleado->primer_nombre. ','}}
+                                    @endforeach
+                                </td>
                                 <td>
                                     <a href="{{route('editar_departamento', ['id' => $departamento->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                         <i class="fa fa-edit"></i>

@@ -27,6 +27,7 @@
                             <th>Sueldo</th>
                             <th>Tipo de Pago</th>
                             <th>Departamento</th>
+                            <th>Empleado</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
@@ -43,6 +44,11 @@
                                 <td class="text-center">
                                     @foreach ($sueldo->departamentos as $departamento)
                                         {{$loop->last ? $departamento->Nombre_departamento : $departamento->Nombre_departamento. ','}}
+                                    @endforeach
+                                </td>
+                                <td class="text-center">
+                                    @foreach ($sueldo->empleados as $empleado)
+                                        {{$loop->last ? $empleado->primer_nombre : $empleado->primer_nombre. ','}}
                                     @endforeach
                                 </td>
                                 <td>

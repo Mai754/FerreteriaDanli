@@ -20,4 +20,9 @@ class Sueldo extends Model
     {
         return $this->belongsToMany(Tipo::class, 'tipo_sueldo');
     }
+
+    public function empleados()
+    {
+        return $this->belongsToMany(Empleado::class, 'sueldo_empleado');
+    }
 }
