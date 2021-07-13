@@ -105,17 +105,13 @@ Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => [
     Route::put('sueldo/{id}', 'SueldoController@actualizar')->name('actualizar_sueldo');
     Route::delete('sueldo/{id}', 'SueldoController@eliminar')->name('eliminar_sueldo');
 
+    Route::get('bauche', 'BaucheController@index')->name('bauche');
+
     Route::get('planilla/entrada', 'HoraController@crear')->name('hora_entrada');
     Route::post('/', 'HoraController@guardar')->name('guardar_horaentrada');
 
     Route::get('planilla/salida', 'HoraSController@crear')->name('hora_salida');
     Route::post('planilla', 'HoraSController@guardar')->name('guardar_horasalida');
-
-    /*Route::post('dias_libres', 'HoraController@asignar_dias_libre')->name('asignar_dias_libres');
-    Route::post('dias_faltantes', 'HoraController@asignar_dias_faltante')->name('asignar_dias_faltantes');
-    Route::post('horas_tabajadas', 'HoraController@asignar_horas_tabajada')->name('asignar_horas_tabajadas');
-    Route::post('domingos_trabajados', 'HoraController@asignar_domingos_trabajado')->name('asignar_domingos_trabajados');
-    Route::post('limpiar_datos/{id}', 'HoraController@resetear_datos_empleados')->name('reset_datos_empleados');*/
 });
 
 Route::group(['prefix' => 'evento', 'namespace'=>'Evento', 'middleware'=>['auth']], function(){
