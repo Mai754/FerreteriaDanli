@@ -21,7 +21,6 @@ class BaucheController extends Controller
                     ->paginate(10);
 
         $sueldos = Sueldo::with('departamentos:id,Nombre_departamento')->orderby('id')->get();
-        $sueldos = Sueldo::with('tipos:id,tipo')->orderby('id')->get();
         $sueldos = Sueldo::with('empleados:id,primer_nombre')->orderby('id')->get();
         $buaches = Bauche::orderby('id')->get();
         return view('empleados.bauche.index', compact('buaches', 'sueldos', 'texto'));
