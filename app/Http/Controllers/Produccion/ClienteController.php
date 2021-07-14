@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidacionCliente;
 use App\Models\produccion\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
@@ -14,11 +15,16 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $clientes = Cliente::orderby('id')->get();
-        return view('produccion.clientes.index', compact('clientes'));
+        $texto = trim($request->get('texto'));
+        $clientes = DB::table('cliente')
+                    ->select('id', 'nombre_cliente', 'apellido_cliente', 'numero_de_telefono')
+                    ->where('apellido_cliente', 'LIKE', '%'.$texto.'%')
+                    ->orderBy('id', 'asc')
+                    ->paginate(10);
+
+        return view('produccion.clientes.index', compact('clientes', 'texto'));
     }
 
     /**

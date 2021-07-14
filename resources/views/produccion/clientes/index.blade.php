@@ -12,7 +12,22 @@
         @include('includes.mensaje')
         <div class="card card-info">
             <div class="card-header">
-                <h3 class="card-title">Clientes</h3>    
+                <h3 class="card-title">Clientes</h3>
+                <div class="card-tools pull-right">
+
+                    <form class="{{route('cliente')}}" method="get">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control" name="texto" value="{{$texto}}" type="search" placeholder="Buscar" aria-label="Search">
+    
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+    
+                </div>    
                 <div class="card-tools pull-right">    
                     <a href="{{route('crear_cliente')}}" class="btn btn-info btn-sm">    
                         <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro    
