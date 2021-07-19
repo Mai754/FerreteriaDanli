@@ -46,14 +46,10 @@
                         <tr class="text-center">
                             <td>{{$sueldo->id}}</td>
                                 <td class="text-center">
-                                    @foreach ($sueldo->empleados as $empleado)
-                                        {{$loop->last ? $empleado->primer_nombre : $empleado->primer_nombre. ','}}
-                                    @endforeach
+                                    {{$sueldo->primer_nombre}}
                                 </td>
                                 <td class="text-center">
-                                    @foreach ($sueldo->departamentos as $departamento)
-                                        {{$loop->last ? $departamento->Nombre_departamento : $departamento->Nombre_departamento. ','}}
-                                    @endforeach
+                                    {{$sueldo->Nombre_departamento}}
                                 </td>
                                 <td>{{$sueldo->Sueldo}}</td>
                                 <td></td>

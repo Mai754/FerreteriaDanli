@@ -14,20 +14,32 @@ class BaucheController extends Controller
     public function index(Request $request)
     {
         $texto = trim($request->get('texto'));
-        $sueldos = DB::table('sueldo')
-                    ->select('id', 'Sueldo')
-                    ->where('Sueldo', 'LIKE', '%'.$texto.'%')
-                    ->orderBy('id', 'asc')
+        $sueldos = DB::table('sueldo_empleado')
+                    ->join('empleado','empleado_id', '=', 'empleado.id')
+                    ->join('sueldo','sueldo_id', '=', 'sueldo.id')
+                    ->join('sueldo_departamento','sueldo_departamento.sueldo_id', '=', 'sueldo.id')
+                    ->join('departamento','sueldo_departamento.departamento_id', '=', 'departamento.id')
+                    ->select('sueldo.id','empleado.primer_nombre', 'departamento.Nombre_departamento', 'sueldo.Sueldo')
+                    ->where(function ($query) use($texto){
+                        $query
+                        ->orwhere('empleado.primer_nombre', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('departamento.Nombre_departamento', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('sueldo.Sueldo', 'LIKE', '%'.$texto.'%');
+                    })
+                    ->orderBy('empleado.id', 'asc')
                     ->paginate(10);
 
-        $sueldos = Sueldo::with('departamentos:id,Nombre_departamento')->orderby('id')->get();
-        $sueldos = Sueldo::with('empleados:id,primer_nombre')->orderby('id')->get();
+        //$sueldos = Sueldo::with('departamentos:id,Nombre_departamento')->orderby('id')->get();
+        //$sueldos = Sueldo::with('empleados:id,primer_nombre')->orderby('id')->get();
         $buaches = Bauche::orderby('id')->get();
         return view('empleados.bauche.index', compact('buaches', 'sueldos', 'texto'));
     }
-    public function crear()
+    public function crear($id)
     {
-        
+        $buaches = DB::table('view_bauche')
+                    ->where('id', '=', $id);
+                    
+        return view('empleados.bauche.crear', compact('buaches'));
     }
     public function guardar(ValidacionBauche $request)
     {
