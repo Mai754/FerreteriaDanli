@@ -107,6 +107,7 @@ Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => [
 
     Route::get('bauche', 'BaucheController@index')->name('bauche');
     Route::delete('bauche/{id}', 'BaucheController@eliminar')->name('eliminar_bauche');
+    Route::get('bauche/{id}/crear', 'BaucheController@crear')->name('crear_bauche');
 
     Route::get('planilla/entrada', 'HoraController@crear')->name('hora_entrada');
     Route::post('/', 'HoraController@guardar')->name('guardar_horaentrada');
