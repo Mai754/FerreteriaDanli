@@ -38,8 +38,7 @@
                             <th>Empleado</th>
                             <th>Departamento</th>
                             <th>Sueldo</th>
-                            <th>Bauche</th>
-                            <th class="width70"></th>
+                            <th class="width70">Bauche</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,21 +54,10 @@
                                 <td>{{$sueldo->Sueldo}}</td>
                                 <td>
                                     <div class="card-tools pull-right">    
-                                        <a href="{{route('crear_bauche', ['id' => $sueldo->empleado_id])}}" class="btn-accion-tabla tooltipsC" title="Ver este registro">
+                                        <a href="{{route('crear_bauche', ['id' => $sueldo->empleado_id])}}" class="btn-accion-tabla tooltipsC" title="Ver Bauche">
                                             <i class="fa fa-folder"></i>
                                         </a>        
                                     </div>
-                                </td>
-                                <td>
-                                    <a href="" class="btn-accion-tabla tooltipsC" title="Editar este registro">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <form action="" class="d-inline form-eliminar" method="POST">
-                                        @csrf @method("delete")
-                                        <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
-                                            <i class="fa fa-trash text-danger"></i>
-                                        </button>
-                                    </form>
                                 </td>
                             </tr>
                         @endforeach

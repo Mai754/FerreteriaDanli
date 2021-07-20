@@ -36,7 +36,7 @@ class BaucheController extends Controller
     public function crear($id)
     {
         $buaches = DB::table('view_bauche')
-                    ->where('id', '=' ,$id);
+                    ->where('id', $id);
         $buaches = $buaches->get();
         return view('empleados.bauche.crear', compact('buaches'));
     }
