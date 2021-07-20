@@ -12,13 +12,12 @@
         <div class="row">
             <div class="col-12">
             
-
+        @foreach ($buaches as $buache)
             <div class="invoice p-3 mb-3">
                 <div class="row">
                     <div class="col-12">
                         <h4>
                             <i class="fas fa-globe"></i> FERRETERIA DANLI, Inc.
-                            <small class="float-right">Date: 2/10/2014</small>
                         </h4>
                     </div>
                 </div>
@@ -29,7 +28,7 @@
                         <b>RTN No. </b><br>
                         <br>
                         <b>ID Empleado: </b> 4F3S8J<br>
-                        <b>Nombre: </b> 2/22/2014<br>
+                        <b>Nombre: </b>{{$buache->primer_nombre}}<br>
                         <b>Periodo: </b> 968-34567
                     </div>
 
@@ -37,7 +36,7 @@
                         <br>
                         <br>
                         <br>
-                        <b>Departamento: </b> 4F3S8J<br>
+                        <b>Departamento: </b> {{$buache->Nombre_departamento}}<br>
                         <b>Sub-Departamento: </b> 2/22/2014<br>
                         <b>Puesto: </b> 968-34567
                     </div>
@@ -159,5 +158,6 @@
                     </div>
                 </div>
             </div>
+        @endforeach
     </section>
 @endsection

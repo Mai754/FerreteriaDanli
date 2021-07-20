@@ -45,21 +45,21 @@
                     <tbody>
                         @foreach($sueldos as $sueldo)
                             <tr class="text-center">
-                                <td>{{$sueldo->id}}</td>
-                                    <td class="text-center">
-                                        {{$sueldo->primer_nombre}}
-                                    </td>
-                                    <td class="text-center">
-                                        {{$sueldo->Nombre_departamento}}
-                                    </td>
-                                    <td>{{$sueldo->Sueldo}}</td>
-                                    <td>
-                                        <div class="card-tools pull-right">    
-                                            <a href="{{route('crear_bauche', ['id' => $sueldo->id])}}" class="btn-accion-tabla tooltipsC" title="Ver este registro">
-                                                <i class="fa fa-folder"></i>
-                                            </a>        
-                                        </div>
-                                    </td>
+                                <td>{{$sueldo->empleado_id}}</td>
+                                <td class="text-center">
+                                    {{$sueldo->primer_nombre}}
+                                </td>
+                                <td class="text-center">
+                                    {{$sueldo->Nombre_departamento}}
+                                </td>
+                                <td>{{$sueldo->Sueldo}}</td>
+                                <td>
+                                    <div class="card-tools pull-right">    
+                                        <a href="{{route('crear_bauche', ['id' => $sueldo->empleado_id])}}" class="btn-accion-tabla tooltipsC" title="Ver este registro">
+                                            <i class="fa fa-folder"></i>
+                                        </a>        
+                                    </div>
+                                </td>
                                 <td>
                                     <a href="" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                         <i class="fa fa-edit"></i>

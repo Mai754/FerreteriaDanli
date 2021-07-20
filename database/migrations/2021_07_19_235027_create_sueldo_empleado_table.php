@@ -16,7 +16,7 @@ class CreateSueldoEmpleadoTable extends Migration
         Schema::create('sueldo_empleado', function (Blueprint $table) {
             $table->unsignedInteger('sueldo_id');
             $table->foreign('sueldo_id', 'fk_empleado_sueldo')->references('id')->on('sueldo')->onDelete('restrict')->onUpdate('restrict');
-            $table->unsignedInteger('empleado_id');
+            $table->unsignedInteger('empleado_id')->unique();
             $table->foreign('empleado_id', 'fk_sueldo_empleado')->references('id')->on('empleado')->onDelete('restrict')->onUpdate('restrict');
             $table->charset = 'utf8mb4'; 
             $table->collation = 'utf8mb4_spanish_ci';

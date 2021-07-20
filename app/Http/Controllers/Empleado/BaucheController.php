@@ -19,7 +19,7 @@ class BaucheController extends Controller
                     ->join('sueldo','sueldo_id', '=', 'sueldo.id')
                     ->join('sueldo_departamento','sueldo_departamento.sueldo_id', '=', 'sueldo.id')
                     ->join('departamento','sueldo_departamento.departamento_id', '=', 'departamento.id')
-                    ->select('sueldo.id','empleado.primer_nombre', 'departamento.Nombre_departamento', 'sueldo.Sueldo')
+                    ->select('empleado_id', 'sueldo.id','empleado.primer_nombre', 'departamento.Nombre_departamento', 'sueldo.Sueldo')
                     ->where(function ($query) use($texto){
                         $query
                         ->orwhere('empleado.primer_nombre', 'LIKE', '%'.$texto.'%')
@@ -31,14 +31,13 @@ class BaucheController extends Controller
 
         //$sueldos = Sueldo::with('departamentos:id,Nombre_departamento')->orderby('id')->get();
         //$sueldos = Sueldo::with('empleados:id,primer_nombre')->orderby('id')->get();
-        $buaches = Bauche::orderby('id')->get();
-        return view('empleados.bauche.index', compact('buaches', 'sueldos', 'texto'));
+        return view('empleados.bauche.index', compact('sueldos', 'texto'));
     }
     public function crear($id)
     {
         $buaches = DB::table('view_bauche')
-                    ->where('id', '=', $id);
-                    
+                    ->where('id', '=' ,$id);
+        $buaches = $buaches->get();
         return view('empleados.bauche.crear', compact('buaches'));
     }
     public function guardar(ValidacionBauche $request)
