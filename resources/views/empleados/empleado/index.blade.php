@@ -24,18 +24,13 @@
                     <thead>
                         <tr class="text-center">
                             <th class="width20">ID</th>
-                            <th>Foto</th>
                             <th>Identidad</th>
-                            <th>P.Nombre</th>
-                            <th>S.Nombre</th>
-                            <th>P.Apellido</th>
-                            <th>S.Apellido</th>
-                            <th>Fecha Nac</th>
+                            <th>Primer Nombre</th>
+                            <th>Primer Apellido</th>
+                            <th>Fecha Nacimiento</th>
                             <th>Direccion</th>
                             <th>Nacionalidad</th>
-                            <th>Telefono</th>
                             <th>Contacto de Emergencia</th>
-                            <th>Sexo</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
@@ -43,18 +38,13 @@
                         @foreach($empleados as $empleado)
                             <tr class="text-center">
                                 <td>{{$empleado->id}}</td>
-                                <td>{{$empleado->foto}}</td>
                                 <td>{{$empleado->DNI_empleado}}</td>
                                 <td>{{$empleado->primer_nombre}}</td>
-                                <td>{{$empleado->segundo_nombre}}</td>
                                 <td>{{$empleado->primer_apellido}}</td>
-                                <td>{{$empleado->segundo_apellido}}</td>
                                 <td>{{$empleado->fecha_de_nacimiento}}</td>
                                 <td>{{$empleado->direccion}}</td>
                                 <td>{{$empleado->nacionalidad}}</td>
-                                <td>{{$empleado->ctelefono}}</td>
                                 <td>{{$empleado->contacto_de_emergencia}}</td>
-                                <td>{{$empleado->sexo}}</td>
                                 <td>
                                     <a href="{{route('editar_empleado', ['id' => $empleado->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                         <i class="fa fa-edit"></i>

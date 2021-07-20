@@ -27,8 +27,8 @@
                         <b>COMPROBANTE DE PAGO</b><br>
                         <b>RTN No. </b><br>
                         <br>
-                        <b>ID Empleado: </b> 4F3S8J<br>
-                        <b>Nombre: </b>{{$buache->primer_nombre}}<br>
+                        <b>ID Empleado: </b> {{$buache->DNI_empleado}}<br>
+                        <b>Nombre: </b>{{$buache->primer_nombre}} {{$buache->segundo_nombre}} {{$buache->primer_apellido}} {{$buache->segundo_apellido}}<br>
                         <b>Periodo: </b> 968-34567
                     </div>
 
@@ -60,21 +60,21 @@
                                         <td></th>
                                         <td></td>
                                         <th> - IHSS</th>
-                                        <td></td>
+                                        <td>{{$buache->IHSS}}</td>
                                     </tr>
                                     <tr>
-                                        <th> + Horas Extras</th>
-                                        <td> </th>
+                                        <th> + Comision por Ventas</th>
+                                        <td></th>
                                         <td></td>
                                         <th> - CICP</th>
-                                        <td></td>
+                                        <td>{{$buache->CICP}}</td>
                                     </tr>
                                     <tr>
                                         <th> + Horas Visita IHSS</th>
                                         <td></th>
                                         <td></td>
                                         <th> - I.S.R.</th>
-                                        <td></td>
+                                        <td>{{$buache->ISR}}</td>
                                     </tr>
                                     <tr>
                                         <th> + Pago por Labor</th>
@@ -86,7 +86,7 @@
                                     <tr>
                                         <th> + Septimo Dia</th>
                                         <td></th>
-                                        <td></td>
+                                        <td>{{$buache->septimo}}</td>
                                         <th> - Prestamos</th>
                                         <td></td>
                                     </tr>
@@ -139,11 +139,11 @@
                                 </tr>
                                 <tr>
                                     <td>Hasta: </td>
+                                    <td>{{$buache->ingresos_neto}}</td>
+                                    <td>{{$buache->egresos_neto}}</td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$buache->pago_neto}}</td>
                                 </tr>
                             </table>
                         </div>

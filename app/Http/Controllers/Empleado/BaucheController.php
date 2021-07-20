@@ -38,34 +38,19 @@ class BaucheController extends Controller
         $buaches = DB::table('view_bauche')
                     ->where('id', $id);
         $buaches = $buaches->get();
+
+        /*$buaches = DB::table('sueldo_empleado')
+                    ->join('empleado','sueldo_empleado.empleado_id','=','empleado.id')
+                    ->join('empleado_departamento','empleado_departamento.empleado_id','=','empleado.id')
+                    ->join('departamento','empleado_departamento.departamento_id','=','departamento.id')
+                    ->join('sueldo','sueldo.id','=','sueldo_empleado.Sueldo_id')
+                    ->select('empleado.primer_nombre','empleado.segundo_nombre','empleado.primer_apellido','empleado.segundo_apellido',
+                            'empleado.DNI_empleado', 'departamento.Nombre_departamento','sueldo.Sueldo as Sueldo', 
+                            'sueldo.Sueldo * 0.02 as IHSS', 'sueldo.Sueldo * 0.015 as RAP', 'sueldo.Sueldo * 0.06 as CICP',
+                            'sueldo.Sueldo * 0.15 as ISR', 
+                            'sueldo.Sueldo - sueldo.Sueldo * 0.02 - sueldo.Sueldo * 0.015 - sueldo.Sueldo * 0.06 - sueldo.Sueldo * 0.015 as sueldo_neto')
+                    ->where('id', $id);*/
+
         return view('empleados.bauche.crear', compact('buaches'));
-    }
-    public function guardar(ValidacionBauche $request)
-    {
-        
-    }
-    public function ver($id)
-    {
-        
-    }
-    public function editar($id)
-    {
-        
-    }
-    public function actualizar(ValidacionBauche $request, $id)
-    {
-        
-    }
-    public function eliminar(Request $request, $id)
-    {
-        if($request->ajax()){
-            if(Bauche::destroy($id)){
-                return response()->json(['mensaje'=>'ok']);
-            }else{
-                return response()->json(['mensaje'=>'ng']);
-            }
-        }else{
-            abort(404);
-        }
     }
 }

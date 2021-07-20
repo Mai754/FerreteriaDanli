@@ -34,7 +34,7 @@ class HoraController extends Controller
     public function crear()
     {
         $now = Carbon::now();
-        $currentTime = $now->format('h:i a');
+        $currentTime = $now->format('h:i');
         return view('empleados.planilla.entrada', compact('currentTime'));
     }
 

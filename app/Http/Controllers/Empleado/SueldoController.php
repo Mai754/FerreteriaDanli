@@ -56,6 +56,7 @@ class SueldoController extends Controller
     public function actualizar(ValidacionSueldo $request, $id)
     {
         $sueldos = Sueldo::findOrFail($id);
+        $sueldos->update($request->all());
         $sueldos->departamentos()->sync($request->departamento_id);
         $sueldos->tipos()->sync($request->tipo_id);
         $sueldos->empleados()->sync($request->empleado_id);
