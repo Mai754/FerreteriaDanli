@@ -25,7 +25,7 @@
                 <div class="row invoice-info">
                     <div class="col-sm-6 invoice-col">
                         <b>COMPROBANTE DE PAGO</b><br>
-                        <b>RTN No. </b><br>
+                        <b>RTN No. 07039017970784</b><br>
                         <br>
                         <b>ID Empleado: </b> {{$buache->DNI_empleado}}<br>
                         <b>Nombre: </b>{{$buache->primer_nombre}} {{$buache->segundo_nombre}} {{$buache->primer_apellido}} {{$buache->segundo_apellido}}<br>
@@ -36,8 +36,8 @@
                         <br>
                         <br>
                         <br>
+                        <br>
                         <b>Departamento: </b> {{$buache->Nombre_departamento}}<br>
-                        <b>Sub-Departamento: </b> 2/22/2014<br>
                         <b>Puesto: </b> 968-34567
                     </div>
                 </div>
@@ -56,58 +56,30 @@
                                         <th>Lps.</th>
                                     </tr>
                                     <tr>
-                                        <th> + Desvengado Semanal</th>
+                                        <th> + Dias Trabajados</th>
                                         <td></th>
                                         <td></td>
-                                        <th> - IHSS</th>
-                                        <td>{{$buache->IHSS}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th> + Comision por Ventas</th>
-                                        <td></th>
-                                        <td></td>
-                                        <th> - CICP</th>
-                                        <td>{{$buache->CICP}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th> + Horas Visita IHSS</th>
-                                        <td></th>
-                                        <td></td>
-                                        <th> - I.S.R.</th>
-                                        <td>{{$buache->ISR}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th> + Pago por Labor</th>
-                                        <td></th>
-                                        <td></td>
-                                        <th> - Embargos</th>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th> + Septimo Dia</th>
-                                        <td></th>
-                                        <td>{{$buache->septimo}}</td>
                                         <th> - Prestamos</th>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <th> + Feriados</th>
-                                        <td></th>
-                                        <td></td>
-                                        <th> - Otros Egresos</th>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th> + Feriados Trabajados</th>
+                                        <th> + Comision por Ventas</th>
                                         <td></th>
                                         <td></td>
                                         <th></th>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <th> + Domingo Trabajado</th>
-                                        <td></th>
+                                        <th> + Pago por Labor</th>
+                                        <td> 44 h</th>
+                                        <td>{{$buache->sueldo_bruto}}</td>
+                                        <th></th>
                                         <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th> + Septimo Dia</th>
+                                        <td></th>
+                                        <td>{{$buache->septimo}}</td>
                                         <th></th>
                                         <td></td>
                                     </tr>
@@ -119,7 +91,7 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <th> + Otros Ingresos</th>
+                                        <th> + Horas Extras</th>
                                         <td></th>
                                         <td></td>
                                         <th></th>
@@ -131,21 +103,22 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <th>Desde: </th>
+                                    <th>SUELDO</th>
                                     <th>INGRESOS</th>
                                     <th>EGRESOS</th>
-                                    <th>DEVENGADO</th>
                                     <th>PRESTAMO OTROGADO</th>
                                     <th>RECIBIDO</th>
                                 </tr>
                                 <tr>
-                                    <td>Hasta: </td>
-                                    <td>{{$buache->ingresos_neto}}</td>
-                                    <td>{{$buache->egresos_neto}}</td>
+                                    <th>Hasta: </th>
+                                    <td>Lps. {{$buache->sueldo_bruto}}</td>
+                                    <td>Lps. {{$buache->ingresos_neto}}</td>
+                                    <td>Lps. </td>
                                     <td></td>
-                                    <td></td>
-                                    <td>{{$buache->pago_neto}}</td>
+                                    <td>Lps. {{$buache->pago_neto}}</td>
                                 </tr>
                             </table>
+
                         </div>
                     </div>
                 </div>

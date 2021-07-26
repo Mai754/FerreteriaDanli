@@ -1,7 +1,7 @@
 @extends("theme.$theme.layout")
 
 @section('titulo')
-    Empleados
+    Bauches
 @endsection
 @section("scripts")
     <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
@@ -12,11 +12,10 @@
         @include('includes.mensaje')
         <div class="card card-info">
             <div class="card-header">
-                <h3 class="card-title">Bauches</h3>
                 
                 <form class="{{route('bauche')}}" method="get" autocomplete="off">
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
+                        <div class="input-group input-group-sm">
                             
                             <input class="form-control float-right" name="texto" value="{{$texto}}" type="text" placeholder="Buscar" aria-label="Search">
 
