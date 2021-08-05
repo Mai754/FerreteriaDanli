@@ -14,7 +14,7 @@ class Evento extends Model
         'start', 
         'end'
     ];
-    protected $guarded = ['id'];
+    
     protected $table = 'evento';
 
     static $rules = [

@@ -24,9 +24,11 @@ class ValidacionCliente extends FormRequest
     public function rules()
     {
         return [
-            'nombre_cliente' => 'required|max:15',
-            'apellido_cliente' => 'required|max:15',
-            'numero_de_telefono' => 'required|max:8|min:8|unique:cliente,numero_de_telefono,'. $this->route('id'),
+            'identidad' => 'required|min:13|max:13|unique:clientes,identidad,'. $this->route('id'),
+            'nombre' => 'required|max:15',
+            'apellido' => 'required|max:15',
+            'telefono' => 'required|max:8|min:8|unique:clientes,telefono,'. $this->route('id'),
+            'direccion' => 'required|max:200',
         ];
     }
 }

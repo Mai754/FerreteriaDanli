@@ -19,7 +19,7 @@
                     </a>
                 </div>
             </div>
-            <form action="{{route('actualizar_inventario', ['id' => $producto->id])}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
+            <form action="{{route('actualizar_inventario', ['id' => $productos->id])}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
                 @csrf
                 @method("put")
                 <div class="card-body">

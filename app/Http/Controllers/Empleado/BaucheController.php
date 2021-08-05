@@ -14,6 +14,7 @@ class BaucheController extends Controller
     public function index(Request $request)
     {
         $texto = trim($request->get('texto'));
+        
         $sueldos = DB::table('sueldo_empleado')
                     ->join('empleado','empleado_id', '=', 'empleado.id')
                     ->join('sueldo','sueldo_id', '=', 'sueldo.id')
@@ -29,8 +30,6 @@ class BaucheController extends Controller
                     ->orderBy('empleado.id', 'asc')
                     ->paginate(10);
 
-        //$sueldos = Sueldo::with('departamentos:id,Nombre_departamento')->orderby('id')->get();
-        //$sueldos = Sueldo::with('empleados:id,primer_nombre')->orderby('id')->get();
         return view('empleados.bauche.index', compact('sueldos', 'texto'));
     }
     public function crear($id)

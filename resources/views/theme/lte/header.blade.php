@@ -5,12 +5,6 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Inicio</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Proveedores</a>
-      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -114,7 +108,6 @@
           <div class="card card-widget widget-user shadow">
             <div class="widget-user-header bg-info">
               <h3 class="widget-user-desc">{{session()->get('nombre') ?? 'Invitado'}}</h3>
-              <h5 class="widget-user-username">Aqui va una descripcion</h5>
             </div>
             <div class="widget-user-image">
               <img class="img-circle elevation-2" src="{{asset("assets/$theme/dist/img/avatar5.png")}}" alt="User Avatar">

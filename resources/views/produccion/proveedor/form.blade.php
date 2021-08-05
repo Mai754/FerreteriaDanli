@@ -3,17 +3,15 @@
     <div class="col-sm-8">
       <input type="text" name="DNI" id="DNI" class="form-control" value="{{old('DNI', $proveedors->DNI ?? '')}}" required/>
     </div>
-
-    
 </div>
+
 <div class="form-group row">
     <label for="nombre_encargado" class="col-lg-2 control-label offset-md-1 requerido">Nombre</label>
     <div class="col-sm-8">
       <input type="text" name="nombre_encargado" id="nombre_encargado" class="form-control" value="{{old('nombre_encargado', $proveedors->nombre_encargado ?? '')}}" required/>
     </div>
-
-    
 </div>
+
 <div class="form-group row">
     <label for="apellido_encargado" class="col-lg-2 control-label offset-md-1 requerido">Apellido</label>
     <div class="col-sm-8">

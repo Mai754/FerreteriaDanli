@@ -70,9 +70,14 @@ Route::group(['prefix' => 'produccion', 'namespace'=>'Produccion', 'middleware' 
 
     Route::get('categorias', 'CategoriaController@index')->name('categorias');
 
-    Route::get('compra', 'ComprasController@index')->name('compras');
-    Route::get('compra/crear', 'ComprasController@crear')->name('crear_compras');
-    Route::post('compra', 'ComprasController@guardar')->name('guardar_compras');
+    Route::get('venta', 'VentaController@index')->name('ventas');
+    Route::get('venta/crear', 'VentaController@crear')->name('crear_venta');
+    Route::get('venta/{id}/ver', 'VentaController@ver')->name('ver_venta')->where('id','[0-9]+');
+
+    Route::post('productoDeVenta', 'VenderController@agregarProductoVenta')->name('agregarProductoVenta');
+    Route::get('vender', 'VenderController@index')->name('vender');
+    Route::get('productoDeVenta', 'VenderController@quitarProductoDeVenta')->name('quitarProductoDeVenta');
+    Route::post('terminarOCancelarVenta', 'VenderController@terminarOCancelarVenta')->name('terminarOCancelarVenta');
 });
 
 Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => ['auth']], function() {
@@ -118,7 +123,9 @@ Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => [
 
 Route::group(['prefix' => 'evento', 'namespace'=>'Evento', 'middleware'=>['auth']], function(){
     Route::get('evento', 'EventoController@index')->name('evento');
-    Route::get('evento/ver', 'EventoController@show');
+    Route::post('evento/ver', 'EventoController@show');
     Route::post('evento/agregar', 'EventoController@store');
     Route::post('evento/editar/{id}', 'EventoController@edit');
+    Route::post('evento/actualizar/{evento}', 'EventoController@update');
+    Route::post('evento/borrar/{id}', 'EventoController@destroy');
 });

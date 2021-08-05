@@ -1,20 +1,34 @@
 <div class="form-group row">
-    <label for="nombre_cliente" class="col-lg-2 control-label offset-md-1 requerido">Nombre</label>
+  <label for="identidad" class="col-lg-2 control-label offset-md-1 requerido">Identidad</label>
+  <div class="col-sm-8">
+    <input type="number" name="identidad" id="identidad" class="form-control" value="{{old('identidad', $clientes->identidad ?? '')}}" required/>
+  </div>
+</div>
+
+<div class="form-group row">
+    <label for="nombre" class="col-lg-2 control-label offset-md-1 requerido">Nombre</label>
     <div class="col-sm-8">
-      <input type="text" name="nombre_cliente" id="nombre_cliente" class="form-control" value="{{old('nombre_cliente', $clientes->nombre_cliente ?? '')}}" required/>
+      <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre', $clientes->nombre ?? '')}}" required/>
     </div>
 </div>
 
 <div class="form-group row">
-    <label for="apellido_cliente" class="col-lg-2 control-label offset-md-1 requerido">Apellido</label>
+    <label for="apellido" class="col-lg-2 control-label offset-md-1 requerido">Apellido</label>
     <div class="col-sm-8">
-      <input type="text" name="apellido_cliente" id="apellido_cliente" class="form-control" value="{{old('apellido_cliente', $clientes->apellido_cliente ?? '')}}" required/>
+      <input type="text" name="apellido" id="apellido" class="form-control" value="{{old('apellido', $clientes->apellido ?? '')}}" required/>
     </div>
 </div>
 
 <div class="form-group row">
-    <label for="numero_de_telefono" class="col-lg-2 control-label offset-md-1 requerido">Numero de Telefono</label>
-    <div class="col-sm-8">
-      <input type="text" name="numero_de_telefono" id="numero_de_telefono" class="form-control" value="{{old('numero_de_telefono', $clientes->numero_de_telefono ?? '')}}" required/>
-    </div>
+  <label for="telefono" class="col-lg-2 control-label offset-md-1 requerido">Telefono</label>
+  <div class="col-sm-8">
+    <input type="number" name="telefono" id="telefono" class="form-control" value="{{old('telefono', $clientes->telefono ?? '')}}" required/>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="direccion" class="col-lg-2 control-label offset-md-1 requerido">Dirección</label>
+  <div class="col-sm-8">
+    <input type="text" name="direccion" id="direccion" class="form-control" value="{{old('direccion', $clientes->direccion ?? '')}}" required/>
+  </div>
 </div>

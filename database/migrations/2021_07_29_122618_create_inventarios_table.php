@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductoCompradoTable extends Migration
+class CreateInventariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateProductoCompradoTable extends Migration
      */
     public function up()
     {
-        Schema::create('producto_comprado', function (Blueprint $table) {
+        Schema::create('inventarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('producto_id');
-            $table->foreign('producto_id', 'fk_comprado_inventario')->references('id')->on('inventario')->onDelete('restrict')->onUpdate('restrict');
+            $table->string('codigo_producto');
+            $table->string('nombre_producto');
+            $table->decimal('precio_compra', 9, 2);
+            $table->decimal('precio_venta', 9, 2);
             $table->integer('cantidad');
-            $table->double('precio');
+            $table->string('descripcion');
+            $table->string('marca');
             $table->timestamps();
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
@@ -32,6 +35,6 @@ class CreateProductoCompradoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('producto_comprado');
+        Schema::dropIfExists('inventarios');
     }
 }
