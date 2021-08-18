@@ -106,43 +106,30 @@
         
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="card card-widget widget-user shadow">
-            <div class="widget-user-header bg-info">
-              <h3 class="widget-user-desc">{{session()->get('nombre') ?? 'Invitado'}}</h3>
+            <div class="widget-user-header bg-success">
+              <h3 class="widget-user-desc">{{session()->get('nombre_usuario') ?? 'Invitado'}}</h3>
             </div>
             <div class="widget-user-image">
               <img class="img-circle elevation-2" src="{{asset("assets/$theme/dist/img/avatar5.png")}}" alt="User Avatar">
             </div>
             <div class="card-footer">
               <div class="row">
-                <div class="col-sm-4 border-right">
-                  <div class="description-block">
-                    <h5 class="description-header">3,200</h5>
-                    <span class="description-text">Ventas</span>
+                @if (session()->get("roles") && count(session()->get("roles")) > 1)
+                  <div class="col-md-12">
+                    <div class="description-block">
+                      <a href="#" class="cambiar-rol btn btn-block btn-outline-success btn-sm">CAMBIAR ROL</a>
+                    </div>
                   </div>
-                </div>
-                <div class="col-sm-4 border-right">
-                  <div class="description-block">
-                    <h5 class="description-header">13,000</h5>
-                    <span class="description-text">Algo</span>
-                  </div>
-                </div>
-
-                <div class="col-sm-4">
-                  <div class="description-block">
-                    <h5 class="description-header">35</h5>
-                    <span class="description-text">Otros</span>
-                  </div>
-                </div>
-
+                @endif
               </div>
             </div>
 
             <div class="row p-4">
               <div class="col-sm-6">
-                <a href="{{route('logout')}}" class="btn btn-block btn-outline-info btn-sm">Salir</a>
+                <a href="{{route('logout')}}" class="btn btn-block btn-outline-success btn-sm">Salir</a>
               </div>
               <div class="col-sm-6">
-                <a href="{{route('login')}}" class="btn btn-block btn-outline-info btn-sm">Ingresar</a>
+                <a href="{{route('login')}}" class="btn btn-block btn-outline-success btn-sm">Ingresar</a>
               </div>
             </div>
           </div>

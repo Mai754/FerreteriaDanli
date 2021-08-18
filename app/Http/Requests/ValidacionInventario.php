@@ -23,14 +23,20 @@ class ValidacionInventario extends FormRequest
      */
     public function rules()
     {
-        return [
-            'codigo_producto' => 'required|max:6|min:6|unique:inventarios,codigo_producto,' . $this->route('id'),
-            'nombre_producto' => 'required|max:100',
-            'precio_compra' => 'required|min:1',
-            'precio_venta' => 'required|min:1',
-            'cantidad' => 'required|min:0',
-            'descripcion' => 'required|max:3000',
-            'marca' => 'required|max:100',
-        ];
+        if($this->route('id')){
+            return [
+                'codigo_producto' => 'nullable|max:6|min:6|',
+                'nombre_producto' => 'required|max:100',
+                'precio_compra' => 'required|min:1',
+                'cantidad' => 'required|min:0',
+            ];
+        }else{
+            return [
+                'codigo_producto' => 'required|max:6|min:6|unique:inventarios,codigo_producto,' . $this->route('id'),
+                'nombre_producto' => 'required|max:100',
+                'precio_compra' => 'required|min:1',
+                'cantidad' => 'required|min:0',
+            ];
+        }
     }
 }

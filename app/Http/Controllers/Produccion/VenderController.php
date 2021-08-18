@@ -77,7 +77,7 @@ class VenderController extends Controller
     {
         $this->vaciarProductos();
         return redirect()
-            ->route("crear_venta")
+            ->route("inicio")
             ->with("mensaje", "Venta cancelada");
     }
 

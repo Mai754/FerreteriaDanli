@@ -1,10 +1,10 @@
 @extends("theme.$theme.layout")
 
 @section('titulo')
-    Factura Ventas
+    Factura Compras
 @endsection
 @section("scripts")
-    <script src="{{asset("assets/pages/scripts/admin/crear.js")}}" type="text/javascript"></script>
+    <script src="{{asset("assets/pages/scripts/admin/compras/crear.js")}}" type="text/javascript"></script>
 @endsection
 @section('contenido')
 <div class="content-header">
@@ -39,7 +39,7 @@
         <hr>
 
         <div class="form-group">
-            <form action="{{route("terminarOCancelarVenta")}}" method="post">
+            <form action="{{route("terminarOCancelarCompra")}}" method="post">
                 @csrf
 
                 <div class="form-group">
@@ -65,32 +65,23 @@
                         <input type="text" class="form-control" placeholder="Nombre Vendedor" id="exampleFormControlInput1" value= "{{session()->get('nombre_usuario')}}" readonly>
                     </div>
 
-                    <!-- <div class="col-lg-6">
-                        <select class="form-control" name="id_cliente" id="id_cliente">
-                            <option value="" selected="" disabled>Seleccione un Cliente</option>
-                            @foreach($clientes as $cliente)
-                                <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
-                            @endforeach
-                        </select>
-                    </div> -->
-
                     <div class="col-lg-1">
-                        <input id="id_cliente" autocomplete="off" required autofocus name="id_cliente" type="text"
+                        <input id="id_proveedor" autocomplete="off" required autofocus name="id_proveedor" type="text"
                             class="form-control d-none" placeholder="id" readonly>
                     </div>
 
                     <div class="col-lg-5">
-                        <label for=""> Clientes [<a href="{{route('crear_cliente')}}" style="color: #17A2BB">Nuevo Cliente</a>]</label>
-                        <input id="nombre_cliente" autocomplete="off" required autofocus name="nombre_cliente" type="text"
-                            class="form-control" placeholder="Nombre del Cliente" readonly>
+                        <label for=""> Proveedores [<a href="{{route('crear_proveedor')}}" style="color: #17A2BB">Nuevo Proveedor</a>]</label>
+                        <input id="nombre_encargado" autocomplete="off" required autofocus name="nombre_encargado" type="text"
+                            class="form-control" placeholder="Nombre del Proveedor" readonly>
                     </div>
 
                     <div class="col-lg-2">
                         <label for=""> Buscar</label>
                         <div class="form-group">
-                            <button type="button" class="btn btn-info btn-block tooltipsC" title="Nuevo Cliente" data-toggle="modal" data-target="#clienteModal"
+                            <button type="button" class="btn btn-info btn-block tooltipsC" title="Buscar Proveedor" data-toggle="modal" data-target="#clienteModal"
                             data-whatever="@mdo">
-                            Cliente
+                            Proveedor
                             </button>
                         </div>
                     </div>
@@ -106,7 +97,7 @@
                         
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Seleccione un Cliente</h4>
+                                <h4 class="modal-title">Seleccione un Proveedor</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -118,24 +109,26 @@
                                             <tr class="text-center">
                                                 <th scope="col">Nombre</th>
                                                 <th scope="col">Apellido</th>
+                                                <th scope="col">Nombre de la Empresa</th>
                                                 <th scope="col">Numero de Telefono</th>
                                                 <th>Copie El Nombre</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($clientes as $cliente)
+                                            @foreach($proveedors as $proveedor)
                                                 <tr class="text-center">
-                                                    <td >{{$cliente->nombre}}</td>
-                                                    <td >{{$cliente->apellido}}</td>
-                                                    <td >{{$cliente->telefono}}</td>
+                                                    <td >{{$proveedor->nombre_encargado}}</td>
+                                                    <td >{{$proveedor->apellido_encargado}}</td>
+                                                    <td >{{$proveedor->nombre_empresa}}</td>
+                                                    <td >{{$proveedor->numero_encargado}}</td>
                                                     <td>
                                                         <button data-dismiss="modal" onclick="
                                                         
-                                                        var inputid = document.getElementById('id_cliente');
-                                                        var inputNombre = document.getElementById('nombre_cliente');
-                                                        inputid.value = '{{$cliente->id}}'
-                                                        inputNombre.value = '{{$cliente->nombre}}'"
-                                                        class="btn btn-outline-info" value="{{$cliente->id}}"> Agregar </button>
+                                                        var inputid = document.getElementById('id_proveedor');
+                                                        var inputNombre = document.getElementById('nombre_encargado');
+                                                        inputid.value = '{{$proveedor->id}}'
+                                                        inputNombre.value = '{{$proveedor->nombre_encargado}}'"
+                                                        class="btn btn-outline-info" value="{{$proveedor->id}}"> Agregar </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -151,34 +144,51 @@
         </div>
 
         <div class="form-group">
-            <form action="{{route("agregarProductoVenta")}}" method="post">
+            <form action="{{route("agregarProductoCompra")}}" method="post">
                 @csrf
                 <hr>
                 <div class="row">
-                    <div class="col-sm-2">
-                        <button type="button" class="btn btn-info btn-block tooltipsC" title="Agregar Producto Automatico" data-toggle="modal" data-target="#productoModal"data-whatever="@mdo">
-                            Productos
-                        </button>
-                    </div>
-
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <input id="codigo_producto" autocomplete="off" required autofocus name="codigo_producto" type="text"
-                                class="form-control" placeholder="Código de Producto" readonly>
+                                class="form-control" placeholder="Código" required>
                         </div>
                     </div>
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <input id="nombre_producto" autocomplete="off" required autofocus name="nombre_producto" type="text"
-                                class="form-control" placeholder="Nombre de Producto" readonly>
+                                class="form-control" placeholder="Nombre de Producto" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <input id="marca" autocomplete="off" required autofocus name="marca" type="text"
+                                class="form-control" placeholder="Marca" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <input id="precio_compra" autocomplete="off" required autofocus name="precio_compra" type="decimal(9,2)"
+                                class="form-control" placeholder="Precio de Compra" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <input id="precio_venta" autocomplete="off" required autofocus name="precio_venta" type="decimal(9,2)"
+                                class="form-control" placeholder="Precio de Venta" required>
                         </div>
                     </div>
     
                     <div class="col-sm-2">
                         <div class="form-group">
                             <input id="cantidad" autocomplete="off" required autofocus name="cantidad" type="number"
-                                class="form-control" placeholder="Cantidad">
+                                class="form-control" placeholder="Cantidad" required>
                         </div>
                     </div>
     
@@ -186,54 +196,6 @@
                         <button type="submit" class="btn btn-info btn-block tooltipsC" title="Facturar">+</button>
                     </div>
                 </div>
-
-                <div class="modal fade bd-example-modal-lg" id="productoModal" tabindex="-1" role="dialog"
-                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Seleccione un Producto</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body p-0">
-                                <form>
-                                    <table  class="table table-striped">
-                                        <thead>
-                                            <tr class="text-center">
-                                                <th scope="col">Código</th>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Precio venta</th>
-                                                <th scope="col">Cantidad</th>
-                                                <th scope="col">Copie el Código</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($inventarios as $inventario)
-                                                <tr class="text-center">
-                                                    <td id="{{$inventario->codigo_producto}}"> {{$inventario->codigo_producto}}</td>
-                                                    <td>{{$inventario->nombre_producto}}</td>
-                                                    <td >{{$inventario->precio_venta}}</td>
-                                                    <td >{{$inventario->cantidad}}</td>
-                                                    <td>
-                                                        <button data-dismiss="modal" onclick="
-                                                            var inputN = document.getElementById('codigo_producto');
-                                                            var inputC = document.getElementById('nombre_producto');
-                                                            inputN.value = '{{$inventario->codigo_producto}}'
-                                                            inputC.value = '{{$inventario->nombre_producto}}'" 
-                                                        class="btn btn-outline-info" value="{{$inventario->id}}">Agregar</button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </form>
         </div>
 
@@ -248,6 +210,7 @@
                             <tr>
                                 <th colspan="2">Código de Productos</th>
                                 <th>Nombre Del Producto</th>
+                                <th>Marca</th>
                                 <th>Cantidad</th>
                                 <th>Precio</th>
                                 <th>Subtotal</th>
@@ -263,10 +226,11 @@
                                     </td>
                                     <td>{{$inventario->codigo_producto}}</td>
                                     <td>{{$inventario->nombre_producto}}</td>
+                                    <td>{{$inventario->marca}}</td>
                                     <td>{{$inventario->cantidad}}</td>
-                                    <td class="text-right">L. {{number_format($inventario->precio_venta, 2)}}</td>
-                                    <td class="text-right">L. {{number_format($inventario->precio_venta * $inventario->cantidad, 2)}}</td>
-                                    <?php $total = $total + $inventario->precio_venta * $inventario->cantidad?>
+                                    <td class="text-right">L. {{number_format($inventario->precio_compra, 2)}}</td>
+                                    <td class="text-right">L. {{number_format($inventario->precio_compra * $inventario->cantidad, 2)}}</td>
+                                    <?php $total = $total + $inventario->precio_compra * $inventario->cantidad?>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -289,7 +253,7 @@
                                 </tr>
                                 <tr>
                                     <th>Impuesto: </th>
-                                    <td class="text-right">L. {{number_format($total-($total/1.15), 2)}}</td>
+                                    <td class="text-right">L. {{number_format($total-($total/1.25), 2)}}</td>
                                 </tr>
                                 <tr>
                                     <th>Total:</th>
@@ -301,7 +265,7 @@
                 </div>
             </div>
         @else
-            <tr>Aqui apareceran los productos de la <strong>VENTA</strong>, cuando ingrese el codigo y la cantidad.</tr>
+            <tr>Aqui apareceran los productos de la <strong>COMPRA</strong>, cuando llene los campos del producto.</tr>
         @endif
     </div>
 </div>

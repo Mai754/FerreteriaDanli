@@ -34,7 +34,7 @@ class VentaController extends Controller
     {
         $clientes = DB::table('clientes')->get();
         $ventas = DB::table('ventas')->get();
-        $inventarios = DB::table('inventarios')->get();
+        $inventarios = DB::table('inventarios')->orderBy('nombre_producto')->get();
 
         return view('produccion.venta.crear', [
             'clientes'=>$clientes,
@@ -54,7 +54,7 @@ class VentaController extends Controller
             ->where('id', $id);
         
 
-        return view('produccion.venta.ver', compact('verventas'));*/
+        return view('produccion.venta.ver', compact('verventas'));
 
         $venta = null;
         $total = 0;
@@ -66,6 +66,6 @@ class VentaController extends Controller
         return view("produccion.venta.ver", [
             "venta" => $venta,
             "total" => $total,
-        ]);
+        ]);*/
     }
 }

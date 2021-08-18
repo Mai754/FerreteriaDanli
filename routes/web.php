@@ -6,6 +6,7 @@ Route::get('/','InicioController@index')->name('inicio');
 Route::get('seguridad/login', 'seguridad\LoginController@index')->name('login');
 Route::post('seguridad/login', 'seguridad\LoginController@login')->name('login-post');
 Route::get('seguridad/logout', 'seguridad\LoginController@logout')->name('logout');
+Route::post('ajax-sesion', 'AjaxController@setSession')->name('ajax')->middleware('auth');
 
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin', 'middleware' => ['auth', 'superadmin']], function() {
     Route::get('','AdminController@index');
@@ -78,6 +79,15 @@ Route::group(['prefix' => 'produccion', 'namespace'=>'Produccion', 'middleware' 
     Route::get('vender', 'VenderController@index')->name('vender');
     Route::get('productoDeVenta', 'VenderController@quitarProductoDeVenta')->name('quitarProductoDeVenta');
     Route::post('terminarOCancelarVenta', 'VenderController@terminarOCancelarVenta')->name('terminarOCancelarVenta');
+
+    Route::get('compra', 'CompraController@index')->name('compras');
+    Route::get('compra/crear', 'CompraController@crear')->name('crear_compra');
+    Route::get('compra/{id}/ver', 'CompraController@ver')->name('ver_compra')->where('id','[0-9]+');
+
+    Route::post('productoDeCompra', 'ComprarController@agregarProductoCompra')->name('agregarProductoCompra');
+    Route::get('comprar', 'ComprarController@index')->name('comprar');
+    Route::get('productoDeCompra', 'ComprarController@quitarProductoDeCompra')->name('quitarProductoDeCompra');
+    Route::post('terminarOCancelarCompra', 'ComprarController@terminarOCancelarCompra')->name('terminarOCancelarCompra');
 });
 
 Route::group(['prefix' => 'empleado', 'namespace'=>'Empleado', 'middleware' => ['auth']], function() {
