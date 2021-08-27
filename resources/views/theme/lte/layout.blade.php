@@ -10,12 +10,16 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{asset("assets/$theme/plugins/fontawesome-free/css/all.min.css")}}">
-        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="{{asset("assets/$theme/plugins/overlayScrollbars/css/OverlayScrollbars.min.css")}}">
         <link rel="stylesheet" href="{{asset("assets/$theme/plugins/overlayScrollbars/css/OverlayScrollbars.css")}}">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.css">
 
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+        <link rel="stylesheet" href="{{asset("assets/pages/scripts/roles/login.css")}}">
         <!-- Theme style -->
         <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/adminlte.min.css")}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -43,20 +47,36 @@
             @if (session()->get("roles") && count(session()->get("roles")) > 1)
                 @csrf
                 <div class="modal fade" id="modal-seleccionar-rol" data-rol-set="{{empty(session()->get("rol_id")) ? 'NO' : 'SI'}}" tabindex="-1" data-backdrop="static" data-keyboard="false">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Roles de Usuario</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p class="text-center">Cuentas con mas de un rol en la plataforma, a continuacion seleccione con cual de ellos desea trabajar</p>
-                                @foreach (session()->get("roles") as $key => $rol)
-                                    <div class="description-block">
-                                        <a href="#" class="asignar-rol btn btn-block btn-outline-info btn-sm" data-rolid="{{$rol['id']}}" data-rolnombre="{{$rol["nombre"]}}">
-                                            {{$rol["nombre"]}}
-                                        </a>
+                            <div class="container">
+                                <div class="cover">
+                                    <div class="front">
+                                        <img src="{{asset("assets/$theme/dist/img/login.jpg")}}" alt="">
+                                        <div class="text">
+                                        <span class="text-1">Cada nuevo amigo es una <br> nueva aventura</span>
+                                        <span class="text-2">Vamos a conectarnos</span>
+                                        </div>
                                     </div>
-                                @endforeach
+                                </div>
+                                <div class="forms">
+                                    <div class="form-content">
+                                        <div class="login-form">
+                                            <div class="title">Roles de Usuario</div>
+                                            <span class="text-2">Cuentas con mas de un rol en la plataforma a continuacion seleccione con cual de ellos desea trabajar.</span>
+                                                @foreach (session()->get("roles") as $key => $rol)
+                                                    <div class="description-block">
+                                                        <a href="#" class="asignar-rol btn btn-block btn-outline-info btn-sm" data-rolid="{{$rol['id']}}" data-rolnombre="{{$rol["nombre"]}}">
+                                                            {{$rol["nombre"]}}
+                                                        </a>
+                                                    </div>
+                                                @endforeach
+                                            <div class="text sign-up-text">
+                                                Gracias por recomendarnos.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

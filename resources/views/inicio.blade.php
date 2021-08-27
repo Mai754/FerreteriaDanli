@@ -97,7 +97,7 @@
                 <!-- Morris chart - Sales -->
                 <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                     <canvas id="revenue-chart-canvas" height="375" style="height: 300px; display: block; width: 816px;" width="1020" class="chartjs-render-monitor"></canvas>
-                 </div>
+                </div>
                 <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
                   <canvas id="sales-chart-canvas" height="0" style="height: 0px; display: block; width: 0px;" width="0" class="chartjs-render-monitor"></canvas>
                 </div>
