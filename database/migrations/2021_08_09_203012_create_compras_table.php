@@ -14,7 +14,7 @@ class CreateComprasTable extends Migration
     public function up()
     {
         Schema::create('compras', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->unsignedInteger('id_proveedor');
             $table->foreign("id_proveedor", 'fk_compra_proveedor')
                 ->references("id")

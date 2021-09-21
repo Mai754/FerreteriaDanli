@@ -14,7 +14,7 @@ class CreateVentasTable extends Migration
     public function up()
     {
         Schema::create('ventas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->unsignedInteger('id_cliente');
             $table->foreign("id_cliente", 'fk_cliente_ventas')
                 ->references("id")
