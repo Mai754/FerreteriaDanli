@@ -18,24 +18,24 @@ class UsuarioAdministradorSeeder extends Seeder
             'usuario' => 'Admin',
             'password' => bcrypt('pass123'),
             'nombre' => 'Admin',
+            'email' => 'prueba@gmail.com',
         ]);
 
         DB::table('usuario')->insert([
             'usuario' => 'Rat',
             'password' => bcrypt('pass123'),
             'nombre' => 'Roberto',
+            'email' => 'prueba2@gmail.com',
         ]);
 
         DB::table('usuario_rol')->insert([
             'rol_id' => 1,
             'usuario_id' => 1,
-            'estado' => 1,
         ]);
 
         DB::table('usuario_rol')->insert([
             'rol_id' => 2,
             'usuario_id' => 2,
-            'estado' => 1,
         ]);
     }
 }
