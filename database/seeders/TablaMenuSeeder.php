@@ -87,7 +87,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '10',
+            'menu_id' => '9',
             'nombre' => 'Administrar Empleados',
             'url' => '#',
             'orden' => '4',
@@ -127,7 +127,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '7',
+            'menu_id' => '6',
             'nombre' => 'Inventario',
             'url' => 'produccion/inventario',
             'orden' => '1',
@@ -135,7 +135,7 @@ class TablaMenuSeeder extends Seeder
         ]);
         
         DB::table('menu')->insert([
-            'menu_id' => '7',
+            'menu_id' => '6',
             'nombre' => 'Nuevo Producto',
             'url' => 'produccion/inventario/crear',
             'orden' => '2',
@@ -143,7 +143,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '8',
+            'menu_id' => '7',
             'nombre' => 'Cliente',
             'url' => 'produccion/cliente',
             'orden' => '1',
@@ -151,7 +151,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '8',
+            'menu_id' => '7',
             'nombre' => 'Nuevo Cliente',
             'url' => 'produccion/cliente/crear',
             'orden' => '2',
@@ -159,7 +159,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '9',
+            'menu_id' => '8',
             'nombre' => 'Proveedor',
             'url' => 'produccion/proveedor',
             'orden' => '1',
@@ -167,7 +167,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '9',
+            'menu_id' => '8',
             'nombre' => 'Nuevo Proveedor',
             'url' => 'produccion/proveedor/crear',
             'orden' => '2',
@@ -175,7 +175,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '11',
+            'menu_id' => '10',
             'nombre' => 'Empleados',
             'url' => 'empleado/empleado',
             'orden' => '3',
@@ -183,7 +183,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '11',
+            'menu_id' => '10',
             'nombre' => 'Nuevo Empleados',
             'url' => 'empleado/empleado',
             'orden' => '2',
@@ -239,7 +239,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '32',
+            'menu_id' => '31',
             'nombre' => 'Proyectos',
             'url' => 'empleado/proyecto',
             'orden' => '1',
@@ -247,7 +247,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '32',
+            'menu_id' => '31',
             'nombre' => 'Crear Proyecto',
             'url' => 'empleado/proyecto/crear',
             'orden' => '2',
@@ -255,7 +255,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '10',
+            'menu_id' => '41',
             'nombre' => 'Proyecto',
             'url' => '#',
             'orden' => '2',
@@ -271,7 +271,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '40',
+            'menu_id' => '39',
             'nombre' => 'Hora de ingreso',
             'url' => 'empleado/planilla/entrada',
             'orden' => '2',
@@ -279,7 +279,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '40',
+            'menu_id' => '39',
             'nombre' => 'Hora de salida',
             'url' => 'empleado/planilla/salida',
             'orden' => '1',
@@ -287,7 +287,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '10',
+            'menu_id' => '41',
             'nombre' => 'Departamentos',
             'url' => 'empleado/departamento',
             'orden' => '3',
@@ -295,7 +295,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '38',
+            'menu_id' => '37',
             'nombre' => 'Sueldo',
             'url' => 'empleado/sueldo',
             'orden' => '1',
@@ -311,7 +311,7 @@ class TablaMenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'menu_id' => '11',
+            'menu_id' => '37',
             'nombre' => 'Bauches',
             'url' => 'empleado/bauche',
             'orden' => '1',

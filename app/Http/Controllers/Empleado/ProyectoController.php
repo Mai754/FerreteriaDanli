@@ -22,7 +22,7 @@ class ProyectoController extends Controller
     public function crear()
     {
         $estados = Estado::orderBy('id')->pluck('nombre', 'id')->toArray();
-        $clientes = Cliente::orderBy('id')->pluck('nombre_cliente', 'id')->toArray();
+        $clientes = Cliente::orderBy('id')->pluck('nombre', 'id')->toArray();
         $empleados = Empleado::orderBy('id')->pluck('primer_nombre', 'id')->toArray();
         return view('empleados.proyecto.crear', compact('empleados', 'clientes', 'estados'));
     }
