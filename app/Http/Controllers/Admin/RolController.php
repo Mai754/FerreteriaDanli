@@ -16,7 +16,7 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        can('listar-roles');
         $datas = Rol::orderby('id')->get();
         return view('admin.rol.index', compact('datas'));
     }
@@ -28,7 +28,7 @@ class RolController extends Controller
      */
     public function crear()
     {
-        //
+        can('crear-roles');
         return view('admin.rol.crear');
     }
 
@@ -40,7 +40,7 @@ class RolController extends Controller
      */
     public function guardar(ValidacionRol $request)
     {
-        //
+        can('guardar-roles');
         Rol::create($request->all());
         return redirect('admin/rol')->with('mensaje', 'Rol creado con exito');
     }
@@ -64,7 +64,7 @@ class RolController extends Controller
      */
     public function editar($id)
     {
-        //
+        can('editar-roles');
         $data = Rol::findOrFail($id);
         return view('admin.rol.editar', compact('data'));
     }
@@ -78,7 +78,7 @@ class RolController extends Controller
      */
     public function actualizar(ValidacionRol $request, $id)
     {
-        //
+        can('actualizar-roles');
         Rol::findOrFail($id)->update($request->all());
         return redirect('admin/rol')->with('mensaje', 'Rol actualizado con exito');
     }
@@ -91,6 +91,7 @@ class RolController extends Controller
      */
     public function eliminar(Request $request, $id)
     {
+        can('eliminar-roles');
         if($request->ajax()){
             if(Rol::destroy($id)){
                 return response()->json(['mensaje'=>'ok']);

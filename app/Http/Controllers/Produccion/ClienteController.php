@@ -12,6 +12,7 @@ class ClienteController extends Controller
 {
     public function index(Request $request)
     {
+        can('listar-cliente');
         $texto = trim($request->get('texto'));
         
         $clientes = DB::table('clientes')
@@ -30,30 +31,34 @@ class ClienteController extends Controller
 
     public function crear()
     {
+        can('crear-cliente');
         return view('produccion.clientes.crear');
     }
 
     public function guardar(ValidacionCliente $request)
     {
+        can('guardar-cliente');
         Cliente::create($request->all());
         return redirect('produccion/cliente')->with('mensaje', 'Cliente creado con exito');
     }
 
     public function editar($id)
     {
+        can('editar-cliente');
         $clientes = Cliente::findOrFail($id);
         return view('produccion.clientes.editar', compact('clientes'));
     }
     
     public function actualizar(ValidacionCliente $request, $id)
     {
+        can('actualizar-cliente');
         Cliente::findOrFail($id)->update($request->all());
         return redirect('produccion/cliente')->with('mensaje', 'Cliente actualizado con exito');
     }
     
     public function eliminar(Request $request, $id)
     {
-        //
+        can('eliminar-cliente');
         if($request->ajax()){
             if(Cliente::destroy($id)){
                 return response()->json(['mensaje'=>'ok']);

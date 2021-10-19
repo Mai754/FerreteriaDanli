@@ -14,6 +14,7 @@ class ProyectoController extends Controller
 {
     public function index()
     {
+        can('listar-proyecto');
         $proyectos = Proyecto::with('empleados:id,primer_nombre')->orderby('id')->get();
         $proyectos = Proyecto::with('estados:id,nombre')->orderby('id')->get();
         return view('empleados.proyecto.index', compact('proyectos'));
@@ -21,6 +22,7 @@ class ProyectoController extends Controller
 
     public function crear()
     {
+        can('crear-proyecto');
         $estados = Estado::orderBy('id')->pluck('nombre', 'id')->toArray();
         $clientes = Cliente::orderBy('id')->pluck('nombre', 'id')->toArray();
         $empleados = Empleado::orderBy('id')->pluck('primer_nombre', 'id')->toArray();
@@ -29,6 +31,7 @@ class ProyectoController extends Controller
 
     public function guardar(ValidacionProyecto $request)
     {
+        can('guardar-proyecto');
         $proyectos = Proyecto::create($request->all());
         $proyectos->empleados()->attach($request->empleado_id);
         $proyectos->clientes()->attach($request->cliente_id);
@@ -38,6 +41,7 @@ class ProyectoController extends Controller
 
     public function ver($id)
     {
+        can('ver-proyecto');
         $clientes = Cliente::orderby('id')->pluck('nombre_cliente','id')->toArray();
         $empleados = Empleado::orderby('id')->pluck('primer_nombre','id')->toArray();
         $proyectos = Proyecto::with('clientes')->findOrFail($id);
@@ -47,6 +51,7 @@ class ProyectoController extends Controller
 
     public function editar($id)
     {
+        can('editar-proyecto');
         $estados = Estado::orderby('id')->pluck('nombre', 'id')->toArray();
         $clientes = Cliente::orderby('id')->pluck('nombre_cliente','id')->toArray();
         $empleados = Empleado::orderby('id')->pluck('primer_nombre','id')->toArray();
@@ -58,6 +63,7 @@ class ProyectoController extends Controller
 
     public function actualizar(ValidacionProyecto $request, $id)
     {
+        can('actualizar-proyecto');
         $proyectos = Proyecto::findOrFail($id);
         $proyectos->update(array_filter($request->all()));
         $proyectos->estados()->sync($request->estado_id);
@@ -68,6 +74,7 @@ class ProyectoController extends Controller
 
     public function eliminar(Request $request, $id)
     {
+        can('eliminar-proyecto');
         if($request->ajax()){
             $proyectos = Proyecto::findOrFail($id);
             $proyectos->empleados()->detach();

@@ -16,7 +16,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        //
+        can('listar-empleado');
         $empleados = Empleado::orderby('id')->get();
         return view('empleados.empleado.index', compact('empleados'));
     }
@@ -28,7 +28,7 @@ class EmpleadoController extends Controller
      */
     public function crear()
     {
-        //
+        can('crear-empleado');
         return view('empleados.empleado.crear');
     }
 
@@ -40,7 +40,7 @@ class EmpleadoController extends Controller
      */
     public function guardar(ValidacionEmpleado $request)
     {
-        //
+        can('guardar-empleado');
         Empleado::create($request->all());
         return redirect('empleado/empleado')->with('mensaje', 'Empleado creado con exito');
     }
@@ -64,7 +64,7 @@ class EmpleadoController extends Controller
      */
     public function editar($id)
     {
-        //
+        can('editar-empleado');
         $empleados = Empleado::findOrFail($id);
         return view('empleados.empleado.editar', compact('empleados'));
     }
@@ -78,7 +78,7 @@ class EmpleadoController extends Controller
      */
     public function actualizar(ValidacionEmpleado $request, $id)
     {
-        //
+        can('actualizar-empleado');
         Empleado::findOrFail($id)->update($request->all());
         return redirect('empleado/empleado')->with('mensaje', 'Empleado actualizado con exito');
     }
@@ -91,7 +91,7 @@ class EmpleadoController extends Controller
      */
     public function eliminar(Request $request, $id)
     {
-        //
+        can('eliminar-empleado');
         if($request->ajax()){
             if(Empleado::destroy($id)){
                 return response()->json(['mensaje'=>'ok']);

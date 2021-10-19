@@ -11,6 +11,7 @@ class CompraController extends Controller
 {
     public function index(Request $request)
     {
+        can('hacer-compra');
         $texto = trim($request->get('texto'));
 
         $comprasTotales = Compra::join("productos_comprados", "productos_comprados.id_compra", "=", "compras.id")

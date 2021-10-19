@@ -1,14 +1,14 @@
 <div class="form-group row">
     <label for="nombre" class="col-lg-2 control-label offset-md-1 requerido">Nombre</label>
     <div class="col-sm-8">
-      <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre', $usuarios->nombre ?? '')}}" required/>
+      <input type="text" placeholder="Escriba nombre completo" name="nombre" id="nombre" class="form-control" value="{{old('nombre', $usuarios->nombre ?? '')}}" required/>
     </div>
 </div>
 
 <div class="form-group row">
     <label for="usuario" class="col-lg-2 control-label offset-md-1 requerido">Usuario</label>
     <div class="col-sm-8">
-      <input type="text" name="usuario" id="usuario" class="form-control" value="{{old('usuario', $usuarios->usuario ?? '')}}" required/>
+      <input type="text" placeholder="Escriba nombre de usuario"  name="usuario" id="usuario" class="form-control" value="{{old('usuario', $usuarios->usuario ?? '')}}" required/>
     </div>
 </div>
 
@@ -20,14 +20,14 @@
 </div>
 
 <div class="form-group row">
-    <label for="password" class="col-lg-2 control-label offset-md-1 {{!isset($usuarios) ? 'requerido' : ''}}">Contrasenia</label>
+    <label for="password" class="col-lg-2 control-label offset-md-1 {{!isset($usuarios) ? 'requerido' : ''}}">Contraseña</label>
     <div class="col-sm-8">
       <input type="password" name="password" id="password" class="form-control" value="" {{!isset($usuarios) ? 'required' : ''}} minlength="5"/>
     </div>
 </div>
 
 <div class="form-group row">
-    <label for="re_password" class="col-lg-2 control-label offset-md-1 {{!isset($usuarios) ? 'requerido' : ''}}">Repetir Contrasenia</label>
+    <label for="re_password" class="col-lg-2 control-label offset-md-1 {{!isset($usuarios) ? 'requerido' : ''}}">Repetir Contraseña</label>
     <div class="col-sm-8">
       <input type="password" name="re_password" id="re_password" class="form-control" value="" {{!isset($usuarios) ? 'required' : ''}} minlength="5"/>
     </div>

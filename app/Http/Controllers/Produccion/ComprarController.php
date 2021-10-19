@@ -13,6 +13,7 @@ class ComprarController extends Controller
 {
     public function index()
     {
+        can('hacer-compra');
         $total = 0;
         foreach ($this->obtenerProductos() as $inventario) {
             $total += $inventario->cantidad * $inventario->precio_compra;

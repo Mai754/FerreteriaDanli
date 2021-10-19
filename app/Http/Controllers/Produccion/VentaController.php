@@ -11,6 +11,7 @@ class VentaController extends Controller
 {
     public function index(Request $request)
     {
+        can('hacer-venta');
         $texto = trim($request->get('texto'));
 
         $ventasTotales = Venta::join("productos_vendidos", "productos_vendidos.id_venta", "=", "ventas.id")

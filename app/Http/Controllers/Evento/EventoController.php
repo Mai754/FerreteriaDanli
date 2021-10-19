@@ -23,6 +23,7 @@ class EventoController extends Controller
 
     public function store(Request $request)
     {
+        can('guardar-evento');
         request()->validate(Evento::$rules);
         $evento = Evento::create($request->all());
     }
@@ -36,6 +37,7 @@ class EventoController extends Controller
 
     public function edit($id)
     {
+        can('editar-evento');
         $evento = Evento::find($id);
         $evento->start = Carbon::createFromFormat('Y-m-d H:i:s', $evento->start)->format('Y-m-d');
         $evento->end = Carbon::createFromFormat('Y-m-d H:i:s', $evento->end)->format('Y-m-d');
@@ -44,6 +46,7 @@ class EventoController extends Controller
 
     public function update(Request $request, Evento $evento)
     {
+        can('actualizar-evento');
         request()->validate(Evento::$rules);
         $evento->update($request->all());
         return response()->json($evento);
@@ -51,6 +54,7 @@ class EventoController extends Controller
 
     public function destroy($id)
     {
+        can('eliminar-evento');
         $evento = Evento::find($id)->delete();
         return response()->json($evento);
     }

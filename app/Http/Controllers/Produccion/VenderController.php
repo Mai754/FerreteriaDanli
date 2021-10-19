@@ -14,6 +14,7 @@ class VenderController extends Controller
 {
     public function index()
     {
+        can('hacer-venta');
         $total = 0;
         foreach ($this->obtenerProductos() as $inventario) {
             $total += $inventario->cantidad * $inventario->precio_venta;

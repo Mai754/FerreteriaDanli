@@ -12,18 +12,21 @@ class UsuarioController extends Controller
 {
     public function index()
     {
+        can('listar-usuarios');
         $usuarios = Usuario::with('roles:id,nombre')->orderby('id')->get();
         return view('admin.usuario.index', compact('usuarios'));
     }
 
     public function crear()
     {
+        can('crear-usuarios');
         $rols = Rol::orderBy('id')->pluck('nombre', 'id')->toArray();
         return view('admin.usuario.crear', compact('rols'));
     }
 
     public function guardar(ValidacionUsuario $request)
     {
+        can('guardar-usuarios');
         $usuario = Usuario::create($request->all());
         $usuario->roles()->sync($request->rol_id);
         return redirect('admin/usuario')->with('mensaje','usuario creado con exito');
@@ -31,6 +34,7 @@ class UsuarioController extends Controller
 
     public function editar($id)
     {
+        can('editar-usuarios');
         $rols = Rol::orderBy('id')->pluck('nombre', 'id')->toArray();
         $usuarios = Usuario::with('roles')->findOrFail($id);
         return view('admin.usuario.editar', compact('usuarios', 'rols'));
@@ -38,6 +42,7 @@ class UsuarioController extends Controller
 
     public function actualizar(ValidacionUsuario $request, $id)
     {
+        can('actualizar-usuarios');
         $usuario = Usuario::findOrFail($id);
         $usuario->update(array_filter($request->all()));
         $usuario->roles()->sync($request->rol_id);
@@ -46,6 +51,7 @@ class UsuarioController extends Controller
 
     public function eliminar(Request $request, $id)
     {
+        can('eliminar-usuarios');
         if($request->ajax()){
             $usuario = Usuario::findOrFail($id);
             $usuario->roles()->detach();
