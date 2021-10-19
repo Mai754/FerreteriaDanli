@@ -33,6 +33,7 @@ class CompraController extends Controller
     
     public function crear()
     {
+        can('hacer-compra');
         $proveedors = DB::table('proveedores')->get();
         $compras = DB::table('compras')->get();
         $inventarios = DB::table('inventarios')->get();

@@ -17,6 +17,7 @@ class MenuRolController extends Controller
      */
     public function index()
     {
+        can('menu-rol');
         $rols = Rol::orderBy('id')->pluck('nombre', 'id')->toArray();
         $menus = Menu::getMenu();
         $menusRols = Menu::with('roles')->get()->pluck('roles', 'id')->toArray();
@@ -31,6 +32,7 @@ class MenuRolController extends Controller
      */
     public function guardar(Request $request)
     {
+        can('asignar-menu');
         if ($request->ajax()) {
             $menus = new Menu();
             if ($request->input('estado') == 1) {

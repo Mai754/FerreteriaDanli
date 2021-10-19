@@ -33,6 +33,7 @@ class VentaController extends Controller
 
     public function crear()
     {
+        can('hacer-venta');
         $clientes = DB::table('clientes')->get();
         $ventas = DB::table('ventas')->get();
         $inventarios = DB::table('inventarios')->orderBy('nombre_producto')->get();

@@ -16,6 +16,7 @@ class PermisoRolController extends Controller
      */
     public function index()
     {
+        can('permiso-rol');
         $rols = Rol::orderBy('id')->pluck('nombre', 'id')->toArray();
         $permisos = Permiso::get();
         $permisosRols = Permiso::with('roles')->get()->pluck('roles', 'id')->toArray();
@@ -24,6 +25,7 @@ class PermisoRolController extends Controller
 
     public function guardar(Request $request)
     {
+        can('asignar-permiso');
         if ($request->ajax()) {
             cache()->tags('permiso')->flush();
             $permisos = new Permiso();
