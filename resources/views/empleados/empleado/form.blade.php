@@ -43,7 +43,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="direccion" class="col-lg-2 control-label offset-md-1 requerido">Direccion</label>
+    <label for="direccion" class="col-lg-2 control-label offset-md-1 requerido">Dirección</label>
     <div class="col-sm-8">
       <input type="text" name="direccion" id="direccion" class="form-control" value="{{old('direccion', $empleados->direccion ?? '')}}" required/>
     </div>
@@ -64,7 +64,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="foto" class="col-lg-2 control-label offset-md-1">Foto</label>
+    <label for="foto" class="col-lg-2 control-label offset-md-1 requerido">Foto</label>
     
     <div class="col-sm-8">
       <div class="custom-file">
@@ -75,7 +75,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="nombre" class="col-lg-2 control-label offset-md-1">Sexo</label>
+    <label for="nombre" class="col-lg-2 control-label offset-md-1 requerido">Sexo</label>
     <div class="col-sm-8">
       <input type="text" name="sexo" id="sexo" class="form-control" value="{{old('sexo', $empleados->sexo ?? '')}}"/>
     </div>
