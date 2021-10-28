@@ -9,6 +9,10 @@ class InicioController extends Controller
 {
     public function index()
     {
+        return redirect('seguridad/login');
+    }
+
+    public function inicio(){
         return view('inicio');
     }
 

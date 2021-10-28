@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/','InicioController@index')->name('inicio');
-Route::post('/ver','InicioController@show');
+Route::get('/inicio','InicioController@inicio')->name('inicio1');
 Route::get('seguridad/login', 'seguridad\LoginController@index')->name('login');
 Route::post('seguridad/login', 'seguridad\LoginController@login')->name('login-post');
 Route::get('seguridad/logout', 'seguridad\LoginController@logout')->name('logout');
