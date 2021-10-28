@@ -84,7 +84,7 @@
                         {!! csrf_field() !!}
                         <div class="form-group d-none">
                             <label for="id">Id</label>
-                            <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="Escribe el titulo del evento">
+                            <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId">
                         </div>
                         <div class="form-group">
                             <label for="title">Título</label>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
-                            <textarea class="form-control" name="descripcion" id="descripcion" cols="3" rows="3"></textarea>
+                            <textarea class="form-control" name="descripcion" id="descripcion" cols="3" rows="3" placeholder="Escribe un descripción del evento"></textarea>
                         </div>
                         <div class="form-group d-none">
                             <label for="start">start</label>

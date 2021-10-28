@@ -17,7 +17,19 @@
                     <a href="{{route('crear_usuario')}}" class="btn btn-info btn-sm">    
                         <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro    
                     </a>        
-                </div>                   
+                </div>
+                <br>
+                <form class="{{route('usuario')}}" method="get">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control" name="texto" value="{{$texto}}" type="search" placeholder="Buscar" aria-label="Search">
+        
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>                 
             </div>        
             <div class="card-body">
                 <table class="table table-bordered table-hover table-striped" id="tabla-data">
