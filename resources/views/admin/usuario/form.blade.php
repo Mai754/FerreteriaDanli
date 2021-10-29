@@ -1,21 +1,21 @@
 <div class="form-group row">
     <label for="nombre" class="col-lg-2 control-label offset-md-1 requerido">Nombre</label>
     <div class="col-sm-8">
-      <input type="text" placeholder="Escriba nombre completo" name="nombre" id="nombre" class="form-control" value="{{old('nombre', $usuarios->nombre ?? '')}}" required/>
+      <input type="text" placeholder="Escriba nombre completo" maxlength="50" name="nombre" id="nombre" class="form-control" value="{{old('nombre', $usuarios->nombre ?? '')}}" required/>
     </div>
 </div>
 
 <div class="form-group row">
     <label for="usuario" class="col-lg-2 control-label offset-md-1 requerido">Usuario</label>
     <div class="col-sm-8">
-      <input type="text" placeholder="Escriba nombre de usuario"  name="usuario" id="usuario" class="form-control" value="{{old('usuario', $usuarios->usuario ?? '')}}" required/>
+      <input type="text" placeholder="Escriba nombre de usuario"   name="usuario" id="usuario" class="form-control" value="{{old('usuario', $usuarios->usuario ?? '')}}" required/>
     </div>
 </div>
 
 <div class="form-group row">
-    <label for="email" class="col-lg-2 control-label offset-md-1 requerido">Email</label>
+    <label for="email" class="col-lg-2 control-label offset-md-1 requerido">Correo Electrónico</label>
     <div class="col-sm-8">
-      <input type="text" name="email" id="email" placeholder="Escriba un correo electrónico" class="form-control" value="{{old('email', $usuarios->email ?? '')}}" required/>
+      <input type="text" name="email" id="email" maxlength="50" placeholder="Escriba un correo electrónico" class="form-control" value="{{old('email', $usuarios->email ?? '')}}" required/>
     </div>
 </div>
 

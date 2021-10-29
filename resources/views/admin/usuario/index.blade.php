@@ -37,7 +37,7 @@
                         <tr>
                             <th>Usuario</th>
                             <th>Nombre</th>
-                            <th>E-mail</th>
+                            <th>Correo Electrónico</th>
                             <th>Roles</th>
                             <th class="width70"></th>
                         </tr>

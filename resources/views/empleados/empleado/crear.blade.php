@@ -19,7 +19,7 @@
                     </a>
                 </div>
             </div>
-            <form action="{{route('guardar_empleado')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
+            <form action="{{route('guardar_empleado')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     @include('empleados.empleado.form')

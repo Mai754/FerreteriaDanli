@@ -22,11 +22,9 @@ class CreateEmpleadoTable extends Migration
             $table->string('segundo_apellido', 15);
             $table->date('fecha_de_nacimiento');
             $table->string('direccion', 100);
-            $table->string('nacionalidad', 20);
             $table->char('telefono', 8)->nullable();
             $table->char('contacto_de_emergencia', 8)->nullable();
             $table->string('foto', 100)->nullable();
-            $table->boolean('sexo');
             $table->timestamps();
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';

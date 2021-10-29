@@ -16,7 +16,8 @@ class UsuarioController extends Controller
         can('listar-usuarios');
         $texto = trim($request->get('texto'));
 
-        $usuarios = Usuario::join('usuario_rol', 'usuario.id', '=', 'usuario_rol.usuario_id')
+        $usuarios = DB::table('usuario')
+                        ->join('usuario_rol', 'usuario.id', '=', 'usuario_rol.usuario_id')
                         ->join('rol', 'usuario_rol.rol_id', '=', 'rol.id')
                         ->select('usuario.usuario', 'usuario.nombre', 'usuario.email', 'rol.nombre')
                         ->where(function ($query) use($texto){

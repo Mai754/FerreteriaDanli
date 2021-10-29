@@ -9,23 +9,20 @@ use Illuminate\Database\Eloquent\Model;
 class Empleado extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'foto', 
-        'DNI_empleado', 
-        'primer_nombre', 
-        'segundo_nombre',
-        'primer_apellido',
-        'segundo_apellido',
-        'fecha_de_nacimiento',
-        'direccion',
-        'nacionalidad',
-        'contacto_de_emergencia',
-        'sexo'
-    ];
     protected $guarded = ['id'];
     protected $table = 'empleado';
 
     public function compra(){
         return $this->hasMany(Compras::class);
+    }
+
+    public function nacionalidads()
+    {
+        return $this->belongsToMany(Nacionalidad::class, 'empleado_nacionalidad');
+    }
+
+    public function sexos()
+    {
+        return $this->belongsToMany(Sexo::class, 'empleado_sexo');
     }
 }

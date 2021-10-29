@@ -26,7 +26,7 @@ if(!function_exists('canUser')){
             if (!in_array($permiso, $permisos)) {
                 if ($redirect) {
                     if(!request()->ajax())
-                        return redirect()->route('inicio')->with('mensaje', 'No tienes permiso para entrar en este modulo')->send();
+                        return redirect()->route('inicio1')->with('mensaje', 'No tienes permiso para entrar en este modulo')->send();
                     abort(403, 'No tiene permiso');                  
                 } else {
                     return false;

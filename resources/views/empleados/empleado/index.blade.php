@@ -43,7 +43,11 @@
                                 <td>{{$empleado->primer_apellido}}</td>
                                 <td>{{$empleado->fecha_de_nacimiento}}</td>
                                 <td>{{$empleado->direccion}}</td>
-                                <td>{{$empleado->nacionalidad}}</td>
+                                <td>
+                                    @foreach ($empleado->nacionalidads as $nacionalidad)
+                                        {{$loop->last ? $nacionalidad->nacionalidad : $nacionalidad->nacionalidad. ','}}
+                                    @endforeach
+                                </td>
                                 <td>{{$empleado->contacto_de_emergencia}}</td>
                                 <td>
                                     <a href="{{route('editar_empleado', ['id' => $empleado->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">

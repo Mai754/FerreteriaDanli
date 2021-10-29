@@ -5,99 +5,73 @@ namespace App\Http\Controllers\Empleado;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidacionEmpleado;
 use App\Models\Empleado\Empleado;
+use App\Models\Empleado\Nacionalidad;
+use App\Models\Empleado\Sexo;
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         can('listar-empleado');
-        $empleados = Empleado::orderby('id')->get();
+        $empleados = Empleado::with('nacionalidads:id,nacionalidad')->orderby('id')->get();
+        $empleados = Empleado::with('sexos:id,sexo')->orderby('id')->get();
         return view('empleados.empleado.index', compact('empleados'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function crear()
     {
         can('crear-empleado');
-        return view('empleados.empleado.crear');
+        $sexos = Sexo::orderBy('id')->pluck('sexo', 'id')->toArray();
+        $nacionalidads = Nacionalidad::orderBy('id')->pluck('nacionalidad', 'id')->toArray();
+        return view('empleados.empleado.crear', compact('sexos', 'nacionalidads'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function guardar(ValidacionEmpleado $request)
     {
         can('guardar-empleado');
-        Empleado::create($request->all());
+        $empleados = Empleado::create($request->all());
+        if ($request->hasFile('foto')){
+            $file = $request->file('foto');
+            $destino = 'assets/imagenes/';
+            $filename = time().'-'.$file->getClientOriginalName();
+            $upload = $request->file('foto')->move($destino, $filename);
+            $empleados->foto = $upload;
+        }
+        $empleados->nacionalidads()->attach($request->nacionalidad_id);
+        $empleados->sexos()->attach($request->sexo_id);
         return redirect('empleado/empleado')->with('mensaje', 'Empleado creado con exito');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function editar($id)
     {
         can('editar-empleado');
-        $empleados = Empleado::findOrFail($id);
-        return view('empleados.empleado.editar', compact('empleados'));
+        $sexos = Sexo::orderby('id')->pluck('sexo', 'id')->toArray();
+        $nacionalidads = Nacionalidad::orderby('id')->pluck('nacionalidad', 'id')->toArray();
+        $empleados = Empleado::with('sexos')->findOrFail($id);
+        $empleados = Empleado::with('nacionalidads')->findOrFail($id);
+        return view('empleados.empleado.editar', compact('empleados', 'sexos', 'nacionalidads'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function actualizar(ValidacionEmpleado $request, $id)
     {
         can('actualizar-empleado');
-        Empleado::findOrFail($id)->update($request->all());
+        $empleados = Empleado::findOrFail($id);
+        $empleados->update(array_filter($request->all()));
+        $empleados->sexos()->sync($request->sexo_id);
+        $empleados->nacionalidads()->sync($request->nacionalidad_id);
         return redirect('empleado/empleado')->with('mensaje', 'Empleado actualizado con exito');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function eliminar(Request $request, $id)
     {
         can('eliminar-empleado');
         if($request->ajax()){
-            if(Empleado::destroy($id)){
-                return response()->json(['mensaje'=>'ok']);
-            }else{
-                return response()->json(['mensaje'=>'ng']);
-            }
+            $empleados = Empleado::findOrFail($id);
+            $empleados->sexos()->detach();
+            $empleados->nacionalidads()->detach();
+            $empleados->delete();
+            return response()->json(['mensaje'=>'ok']);
         }else{
             abort(404);
         }

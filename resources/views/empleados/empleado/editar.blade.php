@@ -19,7 +19,7 @@
                     </a>
                 </div>
             </div>
-            <form action="{{route('actualizar_empleado', ['id' => $empleados->id])}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
+            <form action="{{route('actualizar_empleado', ['id' => $empleados->id])}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off" enctype="multipart/form-data">
                 @csrf
                 @method("put")
                 <div class="card-body">
