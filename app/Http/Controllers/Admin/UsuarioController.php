@@ -27,8 +27,8 @@ class UsuarioController extends Controller
                             ->orwhere('usuario.email', 'LIKE', '%'.$texto.'%')
                             ->orwhere('rol.nombre', 'LIKE', '%'.$texto.'%');
                         })
-                        ->groupBy("usuario.usuario", 'usuario.nombre', 'usuario.email', "usuario.created_at", "usuario.updated_at")
-                        ->groupBy("rol.nombre", "rol.created_at", "rol.updated_at")
+                        ->groupBy("usuario.usuario", 'usuario.nombre', 'usuario.email', "usuario.created_at", "usuario.updated_at",
+                        "rol.nombre", "rol.created_at", "rol.updated_at")
                         ->get();
 
         $usuarios = Usuario::with('roles:id,nombre')->orderby('id')->get();
