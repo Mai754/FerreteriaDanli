@@ -21,7 +21,7 @@
                 <br>
                 <form class="{{route('usuario')}}" method="get">
                     <div class="input-group input-group-sm">
-                        <input class="form-control" name="texto" value="{{$texto}}" type="search" placeholder="Buscar" aria-label="Search">
+                        <input class="form-control" name="texto" value="{{$texto}}" type="search" placeholder="Buscar" aria-label="Search" autocomplete="off">
         
                         <div class="input-group-append">
                             <button class="btn btn-navbar" type="submit">
@@ -57,12 +57,16 @@
                                     <a href="{{route('editar_usuario', ['id' => $usuario->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <form action="{{route('eliminar_usuario', ['id' => $usuario->id])}}" class="d-inline form-eliminar" method="POST">
-                                        @csrf @method("delete")
-                                        <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
-                                            <i class="fa fa-trash text-danger"></i>
-                                        </button>
-                                    </form>
+                                    @if ($usuario->id != 1)
+                                        @if ($usuario->id != auth()->id())
+                                            <form action="{{route('eliminar_usuario', ['id' => $usuario->id])}}" class="d-inline form-eliminar" method="POST">
+                                                @csrf @method("delete")
+                                                <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </button>
+                                            </form>
+                                        @endif
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

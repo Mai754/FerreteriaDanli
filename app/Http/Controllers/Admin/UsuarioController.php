@@ -16,22 +16,14 @@ class UsuarioController extends Controller
         can('listar-usuarios');
         $texto = trim($request->get('texto'));
 
-        $usuarios = DB::table('usuario')
-                        ->join('usuario_rol', 'usuario.id', '=', 'usuario_rol.usuario_id')
-                        ->join('rol', 'usuario_rol.rol_id', '=', 'rol.id')
-                        ->select('usuario.usuario', 'usuario.nombre', 'usuario.email', 'rol.nombre')
-                        ->where(function ($query) use($texto){
-                            $query
-                            ->orwhere('usuario.usuario', 'LIKE', '%'.$texto.'%')
-                            ->orwhere('usuario.nombre', 'LIKE', '%'.$texto.'%')
-                            ->orwhere('usuario.email', 'LIKE', '%'.$texto.'%')
-                            ->orwhere('rol.nombre', 'LIKE', '%'.$texto.'%');
-                        })
-                        ->groupBy("usuario.usuario", 'usuario.nombre', 'usuario.email', "usuario.created_at", "usuario.updated_at")
-                        ->groupBy("rol.nombre", "rol.created_at", "rol.updated_at")
-                        ->get();
+        $usuarios = Usuario::with('roles:id,nombre')
+        ->where(function ($query) use($texto){
+            $query
+            ->orwhere('usuario.usuario', 'LIKE', '%'.$texto.'%')
+            ->orwhere('usuario.nombre', 'LIKE', '%'.$texto.'%')
+            ->orwhere('usuario.email', 'LIKE', '%'.$texto.'%');
+        })->orderby('id')->get();
 
-        $usuarios = Usuario::with('roles:id,nombre')->orderby('id')->get();
         return view('admin.usuario.index', compact('usuarios', 'texto'));
     }
 

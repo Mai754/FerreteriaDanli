@@ -12,7 +12,7 @@
         @include('includes.mensaje')
         <div class="card card-info">
             <div class="card-header">
-                <h3 class="card-title">Editar Rol</h3>
+                <h3 class="card-title">Editar Proveedor</h3>
                 <div class="card-tools pull-right">
                     <a href="{{route('proveedor')}}" class="btn btn-block btn-info btn-sm">
                         <i class="fa fa-fw fa-reply-all"></i> Volver
