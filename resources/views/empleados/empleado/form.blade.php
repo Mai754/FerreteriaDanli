@@ -83,7 +83,7 @@
     <div class="col-sm-8">
       <div class="input-group">
         <div class="custom-file">
-          <input class="form-control" type="file" id="foto" value="{{old('foto', $empleados->foto ?? '')}}" multiple />
+          <input class="form-control" type="file" id="foto" name="foto" value="{{old('foto', $empleados->foto ?? '')}}" multiple />
         </div>
       </div>
     </div>
