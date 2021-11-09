@@ -6,16 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTipoPagoTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('tipo_pago', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Sueldo');
+            $table->string('tipo');
             $table->timestamps();
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
