@@ -25,9 +25,9 @@ class ValidacionProveedor extends FormRequest
     {
         return [
             'DNI' => 'required|max:13|min:13|unique:proveedores,DNI,' . $this->route('id'),
-            'nombre_encargado' => 'required|max:15',
-            'apellido_encargado' => 'required|max:15',
-            'nombre_empresa' => 'required|max:15',
+            'nombre_encargado' => 'required||alpha|max:15',
+            'apellido_encargado' => 'required||alpha|max:15',
+            'nombre_empresa' => 'required||alpha|max:15',
             'dirección_empresa' => 'required|max:100',
             'numero_encargado' => 'required|max:8|min:8|unique:proveedores,numero_encargado,'. $this->route('id'),
             'numero_empresa' => 'required|max:8|min:8|unique:proveedores,numero_empresa,'. $this->route('id'),

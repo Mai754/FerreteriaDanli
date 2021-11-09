@@ -25,10 +25,11 @@ class ValidacionEmpleado extends FormRequest
     {
         return [
             'DNI_empleado' => 'required|max:13|min:13|unique:empleado,DNI_empleado,' . $this->route('id'),
-            'primer_nombre' => 'required|max:15',
-            'segundo_nombre' => 'required|max:15',
-            'primer_apellido' => 'required|max:15',
-            'segundo_apellido' => 'required|max:15',
+            'primer_nombre' => 'required|alpha|max:15',
+            'segundo_nombre' => 'required||alpha|max:15',
+            'primer_apellido' => 'required||alpha|max:15',
+            'segundo_apellido' => 'required||alpha|max:15',
+            'fecha_ingreso' => 'required',
             'fecha_de_nacimiento' => 'required',
             'telefono' => 'required|max:8|min:8|unique:empleado,contacto_de_emergencia,'. $this->route('id'),
             'contacto_de_emergencia' => 'required|max:8|min:8|unique:empleado,contacto_de_emergencia,'. $this->route('id'),
