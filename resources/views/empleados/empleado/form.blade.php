@@ -1,7 +1,9 @@
 <div class="form-group row">
   <label for="DNI_empleado" class="col-lg-2 control-label offset-md-1 requerido">Identidad</label>
   <div class="col-sm-8">
-    <input type="number" name="DNI_empleado" id="DNI_empleado" maxlength="13" placeholder="Escriba su número identidad, sin guiones." class="form-control" value="{{old('DNI_empleado', $empleados->DNI_empleado ?? '')}}" required/>
+    <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+    type = "number"
+    maxlength = "13" name="DNI_empleado" id="DNI_empleado" maxlength="13" placeholder="Escriba su número identidad, sin guiones." class="form-control" value="{{old('DNI_empleado', $empleados->DNI_empleado ?? '')}}" required/>
   </div>
 </div>
 
@@ -76,7 +78,9 @@
 <div class="form-group row">
     <label for="telefono" class="col-lg-2 control-label offset-md-1 requerido">Teléfono de Empleado</label>
     <div class="col-sm-8">
-      <input type="number" name="telefono" maxlength="8" placeholder="Escriba un número de telefono." id="telefono" class="form-control" value="{{old('telefono', $empleados->telefono ?? '')}}" required/>
+      <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+      type = "number"
+      maxlength = "8" name="telefono" maxlength="8" placeholder="Escriba un número de telefono." id="telefono" class="form-control" value="{{old('telefono', $empleados->telefono ?? '')}}" required/>
     </div>
 </div>
 
@@ -85,7 +89,7 @@
     <div class="col-sm-8">
       <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
       type = "number"
-      maxlength = "6" name="contacto_de_emergencia" maxlength="8" placeholder="Escriba un número de emergencia." id="contacto_de_emergencia" class="form-control" value="{{old('contacto_de_emergencia', $empleados->contacto_de_emergencia ?? '')}}" required/>
+      maxlength = "8" name="contacto_de_emergencia" maxlength="8" placeholder="Escriba un número de emergencia." id="contacto_de_emergencia" class="form-control" value="{{old('contacto_de_emergencia', $empleados->contacto_de_emergencia ?? '')}}" required/>
     </div>
 </div>
 
