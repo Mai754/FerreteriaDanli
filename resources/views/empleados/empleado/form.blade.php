@@ -83,7 +83,9 @@
 <div class="form-group row">
     <label for="contacto_de_emergencia" class="col-lg-2 control-label offset-md-1 requerido">Contacto de emergencia</label>
     <div class="col-sm-8">
-      <input type="number" name="contacto_de_emergencia" maxlength="8" placeholder="Escriba un número de emergencia." id="contacto_de_emergencia" class="form-control" value="{{old('contacto_de_emergencia', $empleados->contacto_de_emergencia ?? '')}}" required/>
+      <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+      type = "number"
+      maxlength = "6" name="contacto_de_emergencia" maxlength="8" placeholder="Escriba un número de emergencia." id="contacto_de_emergencia" class="form-control" value="{{old('contacto_de_emergencia', $empleados->contacto_de_emergencia ?? '')}}" required/>
     </div>
 </div>
 
