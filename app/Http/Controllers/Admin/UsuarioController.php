@@ -16,6 +16,7 @@ class UsuarioController extends Controller
         can('listar-usuarios');
         $texto = trim($request->get('texto'));
 
+
         $usuarios = Usuario::with('roles:id,nombre')
         ->where(function ($query) use($texto){
             $query
@@ -23,6 +24,17 @@ class UsuarioController extends Controller
             ->orwhere('usuario.nombre', 'LIKE', '%'.$texto.'%')
             ->orwhere('usuario.email', 'LIKE', '%'.$texto.'%');
         })->orderby('id')->get();
+
+
+
+        $usuarios = Usuario::with('roles:id,nombre')
+        ->where(function ($query) use($texto){
+            $query
+            ->orwhere('usuario.usuario', 'LIKE', '%'.$texto.'%')
+            ->orwhere('usuario.nombre', 'LIKE', '%'.$texto.'%')
+            ->orwhere('usuario.email', 'LIKE', '%'.$texto.'%');
+        })->orderby('id')->get();
+        
 
         return view('admin.usuario.index', compact('usuarios', 'texto'));
     }

@@ -35,6 +35,7 @@
 
 <?php $fecha_actual = date("d-m-Y");?>
 
+
 <div class="form-group row">
   <label for="fecha_ingreso" class="col-lg-2 control-label offset-md-1 requerido">Fecha de ingreso</label>
   <div class="col-sm-8">
@@ -44,7 +45,6 @@
 />
   </div>
 </div>
-
 <div class="form-group row">
     <label for="fecha_de_nacimiento" class="col-lg-2 control-label offset-md-1 requerido">Fecha Nacimiento</label>
     <div class="col-sm-8">
@@ -93,7 +93,7 @@
     <div class="col-sm-8">
       <div class="input-group">
         <div class="custom-file">
-          <input class="form-control" type="file" id="foto" value="{{old('foto', $empleados->foto ?? '')}}" multiple />
+          <input class="form-control" type="file" id="foto" name="foto" value="{{old('foto', $empleados->foto ?? '')}}" multiple />
         </div>
       </div>
     </div>

@@ -31,13 +31,13 @@ class EmpleadoController extends Controller
     {
         can('guardar-empleado');
         $empleados = Empleado::create($request->all());
-        if ($request->hasFile('foto')){
+
             $file = $request->file('foto');
             $destino = 'assets/imagenes/';
-            $filename = time().'-'.$file->getClientOriginalName();
+            $filename = time().'.'.$file->getClientOriginalName();
             $upload = $request->file('foto')->move($destino, $filename);
             $empleados->foto = $upload;
-        }
+
         $empleados->nacionalidads()->attach($request->nacionalidad_id);
         $empleados->sexos()->attach($request->sexo_id);
         return redirect('empleado/empleado')->with('mensaje', 'Empleado creado con exito');
