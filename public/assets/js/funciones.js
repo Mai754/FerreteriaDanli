@@ -44,7 +44,7 @@ var Sistema = function(){
                 newestOnTop: true,
                 positionClass: 'toast-top-right',
                 preventDuplicates: true,
-                timeOut: '5000'
+                timeOut: '8000'
             };
             if (tipo == 'error') {
                 toastr.error(mensaje, titulo);

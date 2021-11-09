@@ -1,5 +1,5 @@
 <div class="form-group row">
-  <label for="identidad" class="col-lg-2 control-label offset-md-1 requerido">Identidad</label>
+  <label for="identidad" class="col-lg-2 control-label offset-md-1 requerido">DNI</label>
   <div class="col-sm-8">
     <input type="number" name="identidad" id="identidad" class="form-control" value="{{old('identidad', $clientes->identidad ?? '')}}" required/>
   </div>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="form-group row">
-  <label for="telefono" class="col-lg-2 control-label offset-md-1 requerido">Telefono</label>
+  <label for="telefono" class="col-lg-2 control-label offset-md-1 requerido">Teléfono</label>
   <div class="col-sm-8">
     <input type="number" name="telefono" id="telefono" class="form-control" value="{{old('telefono', $clientes->telefono ?? '')}}" required/>
   </div>

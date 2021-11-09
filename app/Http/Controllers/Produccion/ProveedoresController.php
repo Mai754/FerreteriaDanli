@@ -6,14 +6,32 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidacionProveedor;
 use App\Models\produccion\Proveedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProveedoresController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         can('listar-proveedores');
-        $proveedors = Proveedor::orderby('id')->get();
-        return view('produccion.proveedor.index', compact('proveedors'));
+
+        $texto = trim($request->get('texto'));
+        
+        $proveedors = DB::table('proveedores')
+                    ->select('id', 'DNI', 'nombre_encargado', 'apellido_encargado', 'nombre_empresa', 'dirección_empresa', 'numero_encargado', 'numero_empresa')
+                    ->where(function ($query) use($texto){
+                        $query
+                        ->orwhere('DNI', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('nombre_encargado', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('apellido_encargado', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('nombre_empresa', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('dirección_empresa', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('numero_encargado', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('numero_empresa', 'LIKE', '%'.$texto.'%');
+                    })
+                    ->orderBy('id', 'asc')
+                    ->paginate(10);
+
+        return view('produccion.proveedor.index', compact('proveedors', 'texto'));
     }
     
     public function crear()

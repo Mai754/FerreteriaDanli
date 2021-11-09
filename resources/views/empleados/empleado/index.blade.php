@@ -28,7 +28,7 @@
                             <th>Primer Nombre</th>
                             <th>Primer Apellido</th>
                             <th>Fecha Nacimiento</th>
-                            <th>Direccion</th>
+                            <th>Ingreso</th>
                             <th>Nacionalidad</th>
                             <th>Contacto de Emergencia</th>
                             <th class="width70"></th>
@@ -42,13 +42,13 @@
                                 <td>{{$empleado->primer_nombre}}</td>
                                 <td>{{$empleado->primer_apellido}}</td>
                                 <td>{{$empleado->fecha_de_nacimiento}}</td>
-                                <td>{{$empleado->direccion}}</td>
+                                <td>{{$empleado->fecha_ingreso}}</td>
                                 <td>
                                     @foreach ($empleado->nacionalidads as $nacionalidad)
                                         {{$loop->last ? $nacionalidad->nacionalidad : $nacionalidad->nacionalidad. ','}}
                                     @endforeach
                                 </td>
-                                <td>{{$empleado->contacto_de_emergencia}}</td>
+                                <td>{{$empleado->telefono}}</td>
                                 <td>
                                     <a href="{{route('editar_empleado', ['id' => $empleado->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                         <i class="fa fa-edit"></i>
