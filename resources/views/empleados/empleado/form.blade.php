@@ -1,7 +1,7 @@
 <div class="form-group row">
   <label for="DNI_empleado" class="col-lg-2 control-label offset-md-1 requerido">Identidad</label>
   <div class="col-sm-8">
-    <input type="text" name="DNI_empleado" id="DNI_empleado" maxlength="13" placeholder="Escriba su número identidad, sin guiones." class="form-control" value="{{old('DNI_empleado', $empleados->DNI_empleado ?? '')}}" required/>
+    <input type="number" name="DNI_empleado" id="DNI_empleado" maxlength="13" placeholder="Escriba su número identidad, sin guiones." class="form-control" value="{{old('DNI_empleado', $empleados->DNI_empleado ?? '')}}" required/>
   </div>
 </div>
 
