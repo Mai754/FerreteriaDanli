@@ -35,16 +35,6 @@
 
 <?php $fecha_actual = date("d-m-Y");?>
 
-
-<div class="form-group row">
-  <label for="fecha_ingreso" class="col-lg-2 control-label offset-md-1 requerido">Fecha de ingreso</label>
-  <div class="col-sm-8">
-    <input type="date" name="fecha_ingreso" id="fecha_ingreso" class="form-control" value="{{old('fecha_ingreso', $empleados->fecha_ingreso ?? '')}}" required
-    min="<?php echo date('Y-m-d',strtotime($fecha_actual."- 60 year"));?>"
-    max="<?php echo date('Y-m-d',strtotime($fecha_actual));?>"
-/>
-  </div>
-</div>
 <div class="form-group row">
     <label for="fecha_de_nacimiento" class="col-lg-2 control-label offset-md-1 requerido">Fecha Nacimiento</label>
     <div class="col-sm-8">

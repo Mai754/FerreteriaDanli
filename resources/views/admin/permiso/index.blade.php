@@ -15,21 +15,9 @@
                 <h3 class="card-title">Permisos</h3>    
                 <div class="card-tools pull-right">    
                     <a href="{{route('crear_permiso')}}" class="btn btn-info btn-sm">    
-                        <i class="fa fa-plus-circle"></i> Nuevo registro    
+                        <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro    
                     </a>        
-                </div>
-                <br>
-                <form class="{{route('permiso')}}" method="get">
-                    <div class="input-group input-group-sm">
-                        <input class="form-control" name="texto" value="{{$texto}}" type="search" placeholder="Buscar" aria-label="Search" autocomplete="off">
-        
-                        <div class="input-group-append">
-                            <button class="btn btn-navbar" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                </div>                   
             </div>        
             <div class="card-body">
                 <table class="table table-bordered table-hover table-striped" id="tabla-data">
@@ -62,15 +50,7 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-            <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item">
-                      <a class="page-link" href="#"></a>
-                    </li>
-                </ul>
-                {{$permisos->links()}}
-            </div>
+            </div>   
         </div>   
     </div>
 @endsection

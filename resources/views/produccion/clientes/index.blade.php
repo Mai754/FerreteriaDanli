@@ -22,7 +22,6 @@
                 <br>
                 <form class="{{route('cliente')}}" method="get">
                     <div class="input-group input-group-sm">
-                        <a href="{{route('cliente')}}" class="btn btn-warning-sm tooltipsC" title="Limpiar filtro">X</a>
                         <input class="form-control" name="texto" value="{{$texto}}" type="search" placeholder="Buscar" aria-label="Search">
         
                         <div class="input-group-append">
@@ -37,16 +36,18 @@
                 <table class="table table-bordered table-hover table-striped" id="tabla-data">
                     <thead>
                         <tr class="text-center">
-                            <th>DNI</th>
+                            <th class="width20">ID</th>
+                            <th>Identidad</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
-                            <th>Numero de teléfono</th>
+                            <th>Numero de telefono</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($clientes as $cliente)
                             <tr class="text-center">
+                                <td>{{$cliente->id}}</td>
                                 <td>{{$cliente->identidad}}</td>
                                 <td>{{$cliente->nombre}}</td>
                                 <td>{{$cliente->apellido}}</td>

@@ -21,7 +21,6 @@
                 <br>
                 <form class="{{route('inventario')}}" method="get">
                     <div class="input-group input-group-sm">
-                        <a href="{{route('inventario')}}" class="btn btn-warning-sm tooltipsC" title="Limpiar filtro">X</a>
                         <input class="form-control" name="texto" autocomplete="off" value="{{$texto}}" type="search" placeholder="Buscar" aria-label="Search">
         
                         <div class="input-group-append">
