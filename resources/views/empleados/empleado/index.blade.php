@@ -42,7 +42,7 @@
                             <th>Fecha Nacimiento</th>
                             <th>Dirección</th>
                             <th>Nacionalidad</th>
-                            <th>Contacto de Emergencia</th>
+                            <th>Teléfono</th>
                             <th class="width70">Acciones</th>
                         </tr>
                     </thead>
@@ -59,7 +59,7 @@
                                         {{$loop->last ? $nacionalidad->nacionalidad : $nacionalidad->nacionalidad. ','}}
                                     @endforeach
                                 </td>
-                                <td>{{$empleado->contacto_de_emergencia}}</td>
+                                <td>{{$empleado->telefono}}</td>
                                 <td>
                                     <a href="{{route('editar_empleado', ['id' => $empleado->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                         <i class="fa fa-edit"></i>

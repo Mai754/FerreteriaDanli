@@ -10,6 +10,7 @@ $(document).ready(function(){
             equalTo: 'Las contraseñas no coinciden'
         }
     };
+    
     Sistema.validacionGeneral('form-general', reglas, mensaje);
 
     $('#password').on('change', function(){

@@ -35,7 +35,8 @@ class ValidacionInventario extends FormRequest
                 'codigo_producto' => 'required|numeric|max:6|min:6|unique:inventarios,codigo_producto,' . $this->route('id'),
                 'nombre_producto' => 'required|alpha|max:100',
                 'precio_compra' => 'required|numeric|min:1',
-                'cantidad' => 'requirednumeric||min:0',
+                'precio_venta' => 'numeric|min:1|higher:precio_compra',
+                'cantidad' => 'required|numeric|min:0',
             ];
         }
     }

@@ -126,7 +126,7 @@
 
                 <div class="row no-print">
                     <div class="col-12">
-                        <a href="javascript:window.print()" id="imprimir" class="btn btn-info">
+                        <a href="javascript:window.print();" id="imprimir" class="btn btn-info">
                             <i class="fas fa-print"></i> Imprimir
                         </a>
                     </div>

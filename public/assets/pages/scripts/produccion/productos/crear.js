@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    const reglas = {
+    /*const reglas = {
         precio_venta: {
             equalTo: "#precio_compra"
         }
@@ -22,5 +22,7 @@ $(document).ready(function(){
         }else{
             $('#precio_venta').prop('required', false);
         }
-    });
+    });*/
+
+    Sistema.validacionGeneral('form-general');
 });
