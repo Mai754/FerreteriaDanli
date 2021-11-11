@@ -10,11 +10,19 @@ use Illuminate\Http\Request;
 
 class DepartamentoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         can('listar-departamento');
-        $departamentos = Departamento::with('empleados:id,primer_nombre')->orderby('id')->get();
-        return view('empleados.departamento.index', compact('departamentos'));
+
+        $texto = trim($request->get('texto'));
+
+        $departamentos = Departamento::with('empleados:id,primer_nombre')
+        ->where(function ($query) use($texto){
+            $query
+            ->orwhere('departamento.Nombre_departamento', 'LIKE', '%'.$texto.'%')
+            ->orwhere('departamento.Numero_departamento', 'LIKE', '%'.$texto.'%');
+        })->orderby('id')->get();
+        return view('empleados.departamento.index', compact('departamentos', 'texto'));
     }
 
     public function crear()

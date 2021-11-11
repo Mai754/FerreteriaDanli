@@ -11,12 +11,20 @@ use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         can('listar-empleado');
-        $empleados = Empleado::with('nacionalidads:id,nacionalidad')->orderby('id')->get();
-        $empleados = Empleado::with('sexos:id,sexo')->orderby('id')->get();
-        return view('empleados.empleado.index', compact('empleados'));
+        $texto = trim($request->get('texto'));
+
+        $empleados = Empleado::with('nacionalidads:id,nacionalidad')
+        ->where(function ($query) use($texto){
+            $query
+            ->orwhere('empleado.DNI_empleado', 'LIKE', '%'.$texto.'%')
+            ->orwhere('empleado.primer_nombre', 'LIKE', '%'.$texto.'%')
+            ->orwhere('empleado.primer_apellido', 'LIKE', '%'.$texto.'%')
+            ->orwhere('empleado.fecha_ingreso', 'LIKE', '%'.$texto.'%');
+        })->orderby('id')->get();
+        return view('empleados.empleado.index', compact('empleados', 'texto'));
     }
     
     public function crear()

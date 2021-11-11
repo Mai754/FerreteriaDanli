@@ -17,23 +17,34 @@
                     <a href="{{route('crear_departamento')}}" class="btn btn-info btn-sm">    
                         <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro    
                     </a>        
-                </div>                   
+                </div>
+                <br>
+                <form class="{{route('departamento')}}" method="get">
+                    <div class="input-group input-group-sm">
+                        <a href="{{route('departamento')}}" class="btn btn-info btn-sm">X</a>
+                        <input class="form-control" name="texto" autocomplete="off" value="{{$texto}}" type="search" placeholder="Ingrese el nombre del departamento o número, para realizar la busqueda" aria-label="Search">
+        
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>        
             <div class="card-body">
                 <table class="table table-bordered table-hover table-striped" id="tabla-data">
                     <thead>
                         <tr class="text-center">
-                            <th class="width20">ID</th>
                             <th>Nombre</th>
-                            <th>Numero</th>
+                            <th>Número</th>
                             <th>Jefe</th>
-                            <th class="width70"></th>
+                            <th class="width70">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($departamentos as $departamento)
                             <tr class="text-center">
-                                <td>{{$departamento->id}}</td>
                                 <td>{{$departamento->Nombre_departamento}}</td>
                                 <td>{{$departamento->Numero_departamento}}</td>
                                 <td class="text-center">

@@ -17,27 +17,38 @@
                     <a href="{{route('crear_empleado')}}" class="btn btn-info btn-sm">    
                         <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro    
                     </a>        
-                </div>                   
+                </div>
+                <br>
+                <form class="{{route('empleado')}}" method="get">
+                    <div class="input-group input-group-sm">
+                        <a href="{{route('empleado')}}" class="btn btn-info btn-sm">X</a>
+                        <input class="form-control" name="texto" autocomplete="off" value="{{$texto}}" type="search" placeholder="Ingrese el DNI del empleado, primer nombre, primer apellido o fecha de ingreso, para realizar la busqueda" aria-label="Search">
+        
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>                   
             </div>        
             <div class="card-body">
                 <table class="table table-bordered table-hover table-striped" id="tabla-data">
                     <thead>
                         <tr class="text-center">
-                            <th class="width20">ID</th>
                             <th>Identidad</th>
                             <th>Primer Nombre</th>
                             <th>Primer Apellido</th>
                             <th>Fecha Nacimiento</th>
-                            <th>Direccion</th>
+                            <th>Dirección</th>
                             <th>Nacionalidad</th>
                             <th>Contacto de Emergencia</th>
-                            <th class="width70"></th>
+                            <th class="width70">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($empleados as $empleado)
                             <tr class="text-center">
-                                <td>{{$empleado->id}}</td>
                                 <td>{{$empleado->DNI_empleado}}</td>
                                 <td>{{$empleado->primer_nombre}}</td>
                                 <td>{{$empleado->primer_apellido}}</td>
