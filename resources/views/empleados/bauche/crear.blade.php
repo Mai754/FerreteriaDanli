@@ -12,7 +12,13 @@
         <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-            
+                <div class="callout callout-info">
+                    <div class="card-tools pull-right">
+                        <a href="{{route('bauche')}}" class="btn btn-block btn-info btn-sm">
+                            <i class="fa fa-fw fa-reply-all"></i> Volver
+                        </a>
+                    </div>
+                </div>
         @foreach ($buaches as $buache)
             <div class="invoice p-3 mb-3">
                 <div class="row">

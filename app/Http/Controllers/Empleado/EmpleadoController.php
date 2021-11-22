@@ -23,7 +23,8 @@ class EmpleadoController extends Controller
             ->orwhere('empleado.primer_nombre', 'LIKE', '%'.$texto.'%')
             ->orwhere('empleado.primer_apellido', 'LIKE', '%'.$texto.'%')
             ->orwhere('empleado.fecha_ingreso', 'LIKE', '%'.$texto.'%');
-        })->orderby('id')->get();
+        })->orderby('id')->paginate(10);
+
         return view('empleados.empleado.index', compact('empleados', 'texto'));
     }
     

@@ -37,6 +37,6 @@
 <div class="form-group row">
     <label for="Sueldo" class="col-lg-1 control-label offset-md-1 requerido">Sueldo</label>
     <div class="col-sm-9">
-      <input type="number" name="Sueldo" id="Sueldo" class="form-control" value="{{old('Sueldo', $sueldos->Sueldo ?? '')}}" required/>
+      <input type="text" name="Sueldo" id="Sueldo" class="form-control" placeholder="Ingrese el sueldo del empleado, 0.00" value="{{old('Sueldo', $sueldos->Sueldo ?? '')}}" required/>
     </div>
 </div>

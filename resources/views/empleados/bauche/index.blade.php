@@ -12,18 +12,17 @@
         @include('includes.mensaje')
         <div class="card card-info">
             <div class="card-header">
-                
-                <form class="{{route('bauche')}}" method="get" autocomplete="off">
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm">
-                            
-                            <input class="form-control float-right" name="texto" value="{{$texto}}" type="text" placeholder="Buscar" aria-label="Search">
-
-                            <div class="input-group-append">
-                                <button class="btn btn-default" type="submit">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
+                <h3 class="card-title">Voucher</h3>
+                <br>
+                <form class="{{route('bauche')}}" method="get">
+                    <div class="input-group input-group-sm">
+                        <a href="{{route('bauche')}}" class="btn btn-info btn-sm">X</a>
+                        <input class="form-control" name="texto" autocomplete="off" value="{{$texto}}" type="search" placeholder="Ingrese el Empleado, Departamento o Sueldo, para realizar la busqueda" aria-label="Search">
+        
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -33,17 +32,15 @@
                 <table class="table table-bordered table-hover table-striped" id="tabla-data">
                     <thead>
                         <tr class="text-center">
-                            <th class="width20">ID</th>
                             <th>Empleado</th>
                             <th>Departamento</th>
                             <th>Sueldo</th>
-                            <th class="width70">Bauche</th>
+                            <th class="width70">Vouche</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($sueldos as $sueldo)
                             <tr class="text-center">
-                                <td>{{$sueldo->empleado_id}}</td>
                                 <td class="text-center">
                                     {{$sueldo->primer_nombre}}
                                 </td>

@@ -75,6 +75,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $empleados->links() }}
             </div>   
         </div>   
     </div>

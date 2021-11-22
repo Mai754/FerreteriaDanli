@@ -15,8 +15,7 @@ class ValidacionSueldo extends FormRequest
         return [
             'Sueldo' => 'required',
             'departamento_id' => 'required',
-            'empleado_id' => 'required',
-            //'empleado_id' => 'required|unique:sueldo_empleado,empleado_id,' . $this->route('id'),
+            'empleado_id' => 'required|unique:sueldo_empleado,empleado_id' . $this->route('id'),
             'tipo_id' => 'required'
         ];
     }

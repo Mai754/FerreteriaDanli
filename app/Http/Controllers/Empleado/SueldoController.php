@@ -9,15 +9,34 @@ use App\Models\Empleado\Empleado;
 use App\Models\Empleado\Sueldo;
 use App\Models\Empleado\Tipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SueldoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $sueldos = Sueldo::with('departamentos:id,Nombre_departamento')->orderby('id')->get();
-        $sueldos = Sueldo::with('tipos:id,tipo')->orderby('id')->get();
-        $sueldos = Sueldo::with('empleados:id,primer_nombre')->orderby('id')->get();
-        return view('empleados.sueldo.index', compact('sueldos'));
+
+        $texto = trim($request->get('texto'));
+
+        $sueldos = DB::table('sueldo')
+                    ->join('sueldo_empleado','sueldo.id','=','sueldo_empleado.sueldo_id')
+                    ->join('empleado','sueldo_empleado.empleado_id','=','empleado.id')
+                    ->join('sueldo_departamento','sueldo.id','=','sueldo_departamento.sueldo_id')
+                    ->join('departamento','sueldo_departamento.departamento_id','=','departamento.id')
+                    ->join('tipo_sueldo','sueldo.id','=','tipo_sueldo.sueldo_id')
+                    ->join('tipo_pago','tipo_sueldo.tipo_id','=','tipo_pago.id')
+                    ->select('sueldo.id','tipo_pago.tipo','empleado.primer_nombre', 'departamento.Nombre_departamento', 'sueldo.Sueldo')
+                    ->where(function ($query) use($texto){
+                        $query
+                        ->orwhere('empleado.primer_nombre', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('departamento.Nombre_departamento', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('sueldo.Sueldo', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('tipo_pago.tipo', 'LIKE', '%'.$texto.'%');
+                    })
+                    ->orderBy('sueldo.id', 'asc')
+                    ->paginate(10);
+
+        return view('empleados.sueldo.index', compact('sueldos', 'texto'));
     }
 
     public function crear()

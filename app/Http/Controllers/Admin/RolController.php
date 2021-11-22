@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidacionRol;
 use App\Models\Admin\Rol;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RolController extends Controller
 {
@@ -14,11 +15,23 @@ class RolController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         can('listar-roles');
         $datas = Rol::orderby('id')->get();
-        return view('admin.rol.index', compact('datas'));
+
+        $texto = trim($request->get('texto'));
+        
+        $datas = DB::table('rol')
+                    ->select('id', 'nombre')
+                    ->where(function ($query) use($texto){
+                        $query
+                        ->orwhere('nombre', 'LIKE', '%'.$texto.'%');
+                    })
+                    ->orderBy('id', 'asc')
+                    ->paginate(10);
+
+        return view('admin.rol.index', compact('datas', 'texto'));
     }
 
     /**

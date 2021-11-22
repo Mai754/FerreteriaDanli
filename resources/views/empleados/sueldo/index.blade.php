@@ -17,39 +17,44 @@
                     <a href="{{route('crear_sueldo')}}" class="btn btn-info btn-sm">    
                         <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro    
                     </a>        
-                </div>                   
+                </div>
+                <br>
+                <form class="{{route('sueldo')}}" method="get">
+                    <div class="input-group input-group-sm">
+                        <a href="{{route('sueldo')}}" class="btn btn-info btn-sm">X</a>
+                        <input class="form-control" name="texto" autocomplete="off" value="{{$texto}}" type="search" placeholder="Ingrese el Sueldo, Empleado, Departamento o tipo de pago, para realizar la busqueda" aria-label="Search">
+        
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>                   
             </div>        
             <div class="card-body">
                 <table class="table table-bordered table-hover table-striped" id="tabla-data">
                     <thead>
                         <tr class="text-center">
-                            <th class="width20">ID</th>
                             <th>Sueldo</th>
                             <th>Tipo de Pago</th>
                             <th>Departamento</th>
                             <th>Empleado</th>
-                            <th class="width70"></th>
+                            <th class="width70">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($sueldos as $sueldo)
                             <tr class="text-center">
-                                <td>{{$sueldo->id}}</td>
                                 <td>{{$sueldo->Sueldo}}</td>
                                 <td class="text-center">
-                                    @foreach ($sueldo->tipos as $tipo)
-                                        {{$loop->last ? $tipo->tipo : $tipo->tipo. ','}}
-                                    @endforeach
+                                        {{$sueldo->tipo}}
                                 </td>
                                 <td class="text-center">
-                                    @foreach ($sueldo->departamentos as $departamento)
-                                        {{$loop->last ? $departamento->Nombre_departamento : $departamento->Nombre_departamento. ','}}
-                                    @endforeach
+                                        {{$sueldo->Nombre_departamento}}
                                 </td>
                                 <td class="text-center">
-                                    @foreach ($sueldo->empleados as $empleado)
-                                        {{$loop->last ? $empleado->primer_nombre : $empleado->primer_nombre. ','}}
-                                    @endforeach
+                                        {{$sueldo->primer_nombre}}
                                 </td>
                                 <td>
                                     <a href="{{route('editar_sueldo', ['id' => $sueldo->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
