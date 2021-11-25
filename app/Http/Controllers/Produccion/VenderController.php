@@ -109,7 +109,7 @@ class VenderController extends Controller
         $codigo_producto = $request->post("codigo_producto");
         $can = $request->post("cantidad");
         $inventario = Inventario::where("codigo_producto", "=", $codigo_producto)->first();
-        if($can>0){
+        if($can > 0){
             if (!$inventario) {
                 return redirect()
                     ->route("crear_venta")
@@ -128,15 +128,17 @@ class VenderController extends Controller
 
     private function agregarProductoACarrito($inventario, $can)
     {
-        if ($inventario->cantidad <= 0) {
+        if ($inventario->cantidad < $can && $inventario->cantidad >= 0){
             return redirect()->route("crear_venta")
                 ->with([
-                    "mensaje" => "No hay existencias del producto",
+                    "mensaje" => "No hay existencias suficientes del producto",
                     "tipo" => "warning"
                 ]);
         }
+
         $inventarios = $this->obtenerProductos();
         $posibleIndice = $this->buscarIndiceDeProducto($inventario->codigo_producto, $inventarios);
+
         if ($posibleIndice === -1) {
             $inventario->cantidad = $can;
             array_push($inventarios, $inventario);
