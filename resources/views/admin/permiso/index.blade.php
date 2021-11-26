@@ -17,7 +17,20 @@
                     <a href="{{route('crear_permiso')}}" class="btn btn-info btn-sm">    
                         <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro    
                     </a>        
-                </div>                   
+                </div>
+                <br>
+                <form class="{{route('permiso')}}" method="get">
+                    <div class="input-group input-group-sm">
+                        <a href="{{route('permiso')}}" class="btn btn-info btn-sm">X</a>
+                        <input class="form-control" name="texto" autocomplete="off" value="{{$texto}}" type="search" placeholder="Ingrese el Nombre del Rol, para realizar la busqueda" aria-label="Search">
+        
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>                 
             </div>        
             <div class="card-body">
                 <table class="table table-bordered table-hover table-striped" id="tabla-data">
@@ -25,7 +38,7 @@
                         <tr class="text-center">
                             <th class="width20">ID</th>
                             <th>Nombre</th>
-                            <th>Slug</th>
+                            <th>Enlace</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>

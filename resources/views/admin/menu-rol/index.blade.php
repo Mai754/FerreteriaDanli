@@ -12,9 +12,19 @@
     <div class="content-header">
         <div class="col-lg-12">
             @include('includes.mensaje')
+            <div class="callout callout-info">
+                <h5><i class="fas fa-info"></i> Instrucciones:</h5>
+                * Menú Rol es destinado para un usuario con rol Administrador. Verifica en la columna el rol que desea asignarle un menú.
+                <br>
+                * En las filas se muestran los menús que se encuentran en el sistema.
+                <br>
+                * Verifique bien el rol y el menú que quiere asignar, luego chequea y automaticamente se guardara.
+                <br>
+                * Los menús se mostrarán de la manera que lo organizo en la pantalla de menú.
+            </div>
             <div class="card card-info">
                 <div class="card-header with-border">
-                    <h3 class="card-title">Menus - Rol</h3>
+                    <h3 class="card-title">Menú - Rol</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="collapse">
                             <i class="fas fa-minus"></i>

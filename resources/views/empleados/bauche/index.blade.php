@@ -12,7 +12,7 @@
         @include('includes.mensaje')
         <div class="card card-info">
             <div class="card-header">
-                <h3 class="card-title">Voucher</h3>
+                <h3 class="card-title">Comprobante de pagos</h3>
                 <br>
                 <form class="{{route('bauche')}}" method="get">
                     <div class="input-group input-group-sm">
@@ -35,7 +35,7 @@
                             <th>Empleado</th>
                             <th>Departamento</th>
                             <th>Sueldo</th>
-                            <th class="width70">Vouche</th>
+                            <th class="width70">Bouche</th>
                         </tr>
                     </thead>
                     <tbody>

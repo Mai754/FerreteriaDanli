@@ -4,7 +4,7 @@
     Factura Ventas
 @endsection
 @section("scripts")
-    <script src="{{asset("assets/pages/scripts/admin/index.js")}}" type="text/javascript"></script>
+    <script src="{{asset("assets/pages/scripts/admin/permiso/crear.js")}}" type="text/javascript"></script>
 @endsection
 @section('contenido')
 <div class="content-header">

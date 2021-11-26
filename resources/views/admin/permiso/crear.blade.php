@@ -10,6 +10,12 @@
     <div class="content-header">
         @include('includes.form-error')
         @include('includes.mensaje')
+        <div class="callout callout-info">
+            <h5><i class="fas fa-info"></i> Instrucciones:</h5>
+            El apartado de creación de permisos es destinado para desarrollo, el nombre de permiso es lo que se mostrara para la asignar un permiso en PERMISO-ROL.
+            <br>
+            Enlance; contiene las instrucción que el codigo fuente necesita para que funcione correctamente los permisos.
+        </div>
         <div class="card card-info">
             <div class="card-header">
                 <h3 class="card-title">Crear Permiso</h3>

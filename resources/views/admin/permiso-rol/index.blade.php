@@ -12,6 +12,14 @@
     <div class="content-header">
         <div class="col-lg-12">
             @include('includes.mensaje')
+            <div class="callout callout-info">
+                <h5><i class="fas fa-info"></i> Instrucciones:</h5>
+                * Permiso Rol es destinado para un usuario con rol Administrador. Verifica en la columna el rol que desea asignarle un permiso.
+                <br>
+                * En las filas se muestran los permisos que se encuentran en el sistema.
+                <br>
+                * Verifique bien el rol y el permiso que quiere asignar, luego chequea y automaticamente se guardara.
+            </div>
             <div class="card card-info">
                 <div class="card-header with-border">
                     <h3 class="card-title">Permiso - Rol</h3>

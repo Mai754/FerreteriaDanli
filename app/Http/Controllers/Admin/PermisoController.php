@@ -6,14 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidarPermiso;
 use App\Models\Admin\Permiso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PermisoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         can('listar-permisos');
-        $permisos = Permiso::orderBy('id')->get();
-        return view('admin.permiso.index', compact('permisos'));
+
+        $texto = trim($request->get('texto'));
+        
+        $permisos = DB::table('permiso')
+                    ->select('id', 'nombre', 'slug')
+                    ->where(function ($query) use($texto){
+                        $query
+                        ->orwhere('slug', 'LIKE', '%'.$texto.'%')
+                        ->orwhere('nombre', 'LIKE', '%'.$texto.'%');
+                    })
+                    ->orderBy('id', 'asc')
+                    ->paginate(10);
+
+        return view('admin.permiso.index', compact('permisos', 'texto'));
     }
     
     public function crear()
