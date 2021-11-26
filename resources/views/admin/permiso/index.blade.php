@@ -22,7 +22,7 @@
                 <form class="{{route('permiso')}}" method="get">
                     <div class="input-group input-group-sm">
                         <a href="{{route('permiso')}}" class="btn btn-info btn-sm">X</a>
-                        <input class="form-control" name="texto" autocomplete="off" value="{{$texto}}" type="search" placeholder="Ingrese el Nombre del Rol, para realizar la busqueda" aria-label="Search">
+                        <input class="form-control" name="texto" autocomplete="off" value="{{$texto}}" type="search" placeholder="Ingrese el nombre del rol o enlance para realizar la busqueda" aria-label="Search">
         
                         <div class="input-group-append">
                             <button class="btn btn-navbar" type="submit">
@@ -36,16 +36,14 @@
                 <table class="table table-bordered table-hover table-striped" id="tabla-data">
                     <thead>
                         <tr class="text-center">
-                            <th class="width20">ID</th>
                             <th>Nombre</th>
                             <th>Enlace</th>
-                            <th class="width70"></th>
+                            <th class="width70">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($permisos as $permiso)
                             <tr class="text-center">
-                                <td>{{$permiso->id}}</td>
                                 <td>{{$permiso->nombre}}</td>
                                 <td>{{$permiso->slug}}</td>
                                 <td>

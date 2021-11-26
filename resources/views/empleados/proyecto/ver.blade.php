@@ -75,8 +75,8 @@
                     <br>
                     <div class="text-muted">
                       <p class="text-sm">Cliente
-                        @foreach ($clientes as $id => $nombre_cliente)
-                            <b class="d-block">{{$nombre_cliente}}</b>
+                        @foreach ($clientes as $id => $nombre)
+                            <b class="d-block">{{$nombre}}</b>
                         @endforeach
                       </p>
                       <p class="text-sm">Lider De Proyecto

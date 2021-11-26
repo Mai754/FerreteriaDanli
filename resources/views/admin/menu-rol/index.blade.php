@@ -20,11 +20,11 @@
                 <br>
                 * Verifique bien el rol y el menú que quiere asignar, luego chequea y automaticamente se guardara.
                 <br>
-                * Los menús se mostrarán de la manera que lo organizo en la pantalla de menú.
+                * El menú se mostrarán de la manera que lo organizo en la pantalla de menú.
             </div>
             <div class="card card-info">
                 <div class="card-header with-border">
-                    <h3 class="card-title">Menú - Rol</h3>
+                    <h3 class="card-title">Asignación de menú</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="collapse">
                             <i class="fas fa-minus"></i>

@@ -21,9 +21,9 @@
         @include('includes.mensaje')
         <div class="callout callout-info">
             <h5><i class="fas fa-info"></i> Instrucciones:</h5>
-            * Menús se muestra con opciones encajables, donde puede mover cada una de ellas y organizarlas como más le place.
+            * Menú se muestra con opciones encajables, donde puede mover cada una de ellas y organizarlas como más le place.
             <br>
-            * Se pueden organizar en submenús, puede encajar un menú dentro de otro.
+            * Se pueden organizar en submenú, puede encajar un menú dentro de otro.
             <br>
             * Al asignar un menú sobre otro, el menú padre pierde su enlace, y no podrá acceder al enlace que tenía ese menú. 
             <br> 
@@ -31,13 +31,13 @@
             <br>
             * Cada menú muestra una información previa de lo que contiene, también una visualización del icono.
             <br>
-            * Al darle clic a cualquier menú este mostrara un formulario con su información, donde se puede editar la información ese menú.
+            * Al darle clic a cualquier menú este mostrará un formulario con su información, donde se puede editar la información ese menú.
             <br>
             * También puede eliminar ese menú, con el icono de basurero, que se muestra en la parte derecha de cada menú.
         </div>
         <div class="card card-info">
             <div class="card-header col-lg-12">
-                <h3 class="card-title">Menús</h3>
+                <h3 class="card-title">Secciones del Menú.</h3>
                 <div class="card-tools pull-right">    
                     <a href="{{route('crear_menu')}}" class="btn btn-info btn-sm">    
                         <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro    
