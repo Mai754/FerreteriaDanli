@@ -33,6 +33,6 @@ class ValidacionEmpleado extends FormRequest
             'fecha_de_nacimiento' => 'required',
             'telefono' => 'required|max:8|min:8|unique:empleado,contacto_de_emergencia,'. $this->route('id'),
             'contacto_de_emergencia' => 'required|max:8|min:8|unique:empleado,contacto_de_emergencia,'. $this->route('id'),
-        ];;
+        ];
     }
 }
